@@ -37,6 +37,10 @@
              /* Placeholder for a powerful industrial image */
              background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('construction.jpg') no-repeat center center/cover;
         }
+	.vision-bg {
+             /* Placeholder for a powerful industrial image */
+             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('vision_bg.jpg') no-repeat center center/cover;
+        }
 
         /* To override Tailwind's default list-style behavior for the navigation */
         .nav-list {
@@ -53,7 +57,9 @@
         <div class="max-w-7xl mx-auto px-4">
             <!-- Top Bar: Logo and Mobile Menu Button -->
             <div class="flex justify-between items-center">
-                <a href="#" class="text-4xl text-gold-accent font-extrabold tracking-widest font-display p-0">BLACK GOLD</a>
+                <a href="#" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
                 
                 <!-- Mobile Menu Toggle Button -->
                 <button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
@@ -131,7 +137,7 @@
     </section>
 
     <!-- Mission & Vision Section -->
-    <section class="bg-black-primary py-20 text-center">
+    <section class="bg-black-primary py-20 text-center vision-bg">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-10 uppercase font-bold">
                 Our Purpose & Future
