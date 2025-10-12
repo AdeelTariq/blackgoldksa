@@ -17,6 +17,7 @@
           theme: {
             extend: {
               colors: {
+                'header': '#000000CC',          /* Header color */
                 'black-primary': '#000000',     /* Pure Black */
                 'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
                 'gold-accent': '#faa412',       /* Deeper, more classic Gold */
@@ -88,10 +89,11 @@
 </head>
 <body class="font-sans bg-black-primary text-white min-h-screen">
 
-    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+    <!-- Header & Navigation --><header class="bg-header py-5 border-b border-gold-accent sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
                 <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <img src="images/monogram.png" class="w-16 h-auto mx-auto" alt="Logo"/>
                     <span>BLACK GOLD CONSTRUCTION</span>
                 </a>
                 
@@ -205,7 +207,8 @@
                 <!-- Column 1: Logo & Company Description -->
                 <div class="md:col-span-2">
                     <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
-                        <span>BLACK GOLD CONSTRUCTION</span>
+                        <img src="images/monogram.png" class="w-16 h-auto mx-auto" alt="Logo"/>
+                    <span>BLACK GOLD CONSTRUCTION</span>
                     </a>
                     <p class="text-sm text-gray-400 mb-6">
                         Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
@@ -237,7 +240,8 @@
                     <ul class="space-y-4 text-gray-400 text-sm">
                         <li class="flex items-start space-x-3">
                             <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <!-- Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                            <!-- Location and Map Link --><a href="https://maps.google.com/?q=27.0097093,49.6563017" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Makkah street, Number 3348, Additional number 8124
+Zip code 35514, Jubail Eastern Region KSA</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>

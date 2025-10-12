@@ -14,6 +14,7 @@
           theme: {
             extend: {
               colors: {
+                'header': '#000000CC',          /* Header color */
                 'black-primary': '#000000',     /* Pure Black */
                 'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
                 'gold-accent': '#faa412',       /* Deeper, more classic Gold */
@@ -28,7 +29,7 @@
         }
     </script>
     
-    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght400;700&display=swap" rel="stylesheet">
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         /* Dark Overlay for Hero Text Readability */
@@ -61,10 +62,11 @@
 </head>
 <body class="font-sans bg-black-primary text-white min-h-screen flex flex-col">
 
-    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+    <!-- Header & Navigation --><header class="bg-header py-5 border-b border-gold-accent sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
                 <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <img src="images/monogram.png" class="w-16 h-auto mx-auto" alt="Logo"/>
                     <span>BLACK GOLD CONSTRUCTION</span>
                 </a>
                 
