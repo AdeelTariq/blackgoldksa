@@ -16,7 +16,7 @@
               colors: {
                 'black-primary': '#000000',     /* Pure Black */
                 'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
-                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-accent': '#faa412',       /* Deeper, more classic Gold */
                 'gold-hover': '#AE933B',        /* Darker Gold for hover state */
               },
               fontFamily: {
@@ -131,11 +131,9 @@
     <main class="bg-black-secondary py-20">
         <div class="max-w-7xl mx-auto px-4">
             
-            <!-- Removed the H2 heading "ALL PROJECT IMAGES" as requested -->
-
-            <!-- Dynamic Image Grid -->
-            <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                <!-- Image cards generated here by JS -->
+            <!-- Container for dynamic headings and image grids -->
+            <div id="gallery-container" class="w-full">
+                <!-- Headings and image grids will be generated here by JS -->
             </div>
         </div>
     </main>
@@ -144,7 +142,7 @@
     <div id="lightbox-modal" class="lightbox-overlay" onclick="closeLightbox(event)">
         <div class="relative max-w-6xl w-full h-full p-4 md:p-8 flex items-center justify-center">
             
-            <!-- Close Button - ADDED ID FOR CLOSING FIX -->
+            <!-- Close Button -->
             <button id="close-btn" onclick="closeLightbox(event)" class="absolute top-4 right-4 text-gold-accent hover:text-white transition duration-300 z-30 p-2 rounded-full bg-black/50">
                 <!-- X Icon --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
@@ -218,7 +216,7 @@
                         </li>
                         <li class="flex items-center space-x-3">
                             <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
-                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                            <span><a href="mailto:tenders@blackgoldcons.com" class="hover:text-gold-accent transition duration-300">tenders@blackgoldcons.com</a></span>
                         </li>
                     </ul>
                 </div>
@@ -233,11 +231,11 @@
 
     <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-        // --- Project Data Structure (Copied from projects.html for independent functionality) ---
+        // --- Project Data Structure (Cleaned up to keep only ID, Title, and Images) ---
         const projectsData = [
-        {
+            {
                 id: -10,
-                title: "Office",
+                title: "Office Interior and Exterior",
                 images: [
                     "projects/office-1.png",
                     "projects/office-2.png",
@@ -247,54 +245,48 @@
             },
             {
                 id: -5,
-                title: "Workshop",
+                title: "Workshop Facility",
                 images: [
                     "projects/workshop.png",
+                    "projects/workshop-1.jpeg",
+                    "projects/workshop-2.jpeg",
+                    "projects/workshop-3.jpeg",
+                    "projects/workshop-4.jpeg",
+                    "projects/workshop-5.jpeg",
+                    "projects/workshop-6.jpeg",
+                    "projects/workshop-7.jpeg",
+                    "projects/workshop-8.jpeg",
+                    "projects/workshop-9.jpeg",
+                    "projects/workshop-10.jpeg",
+                    "projects/workshop-11.jpeg",
+                    "projects/workshop-12.jpeg",
+                    "projects/workshop-13.jpeg",
+                    "projects/workshop-14.jpeg",
+                    "projects/workshop-15.jpeg",
+                    "projects/workshop-16.jpeg",
+                    "projects/workshop-17.jpeg",
+                    "projects/workshop-18.jpeg",
+                    "projects/workshop-19.jpeg",
+                    "projects/workshop-20.jpeg",
+                    "projects/workshop-21.jpeg",
                 ]
             },
-        // --- Main Projects ---
+            // --- Main Projects ---
             {
                 id: 1,
                 title: "CONSTRUCTION OF SWCC TANK",
-                subtitle: "Construction of Two Tanks",
-                client: "GSW",
-                type: "Fabrication & Erection",
-                timeline: "2.5 Years", 
-                location: "RIYADH",
-                value: "27 Million SAR",
-                status: "COMPLETED PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/one.png"
                 ]
             },{
                 id: 2,
                 title: "BOTTOM REPLACEMENT OF DEMIN WATER TANK (UNITED)",
-                subtitle: "REPLACEMENT OF BOTTOM, SKETCH & ANNULAR PLATES",
-                client: "UNITED",
-                type: "Bottom Replacement",
-                timeline: "8 months",
-                location: "Jubail",
-                value: "3.3 Million SAR",
-                status: "COMPLETED PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/two.png"
                 ]
             },{
                 id: 3,
                 title: "FABRICATION & REPLACEMENT OF PIPING & STR VALVE STATIONS...",
-                subtitle: "31,000 INCH-DIA PIPING & 822 TONNAGE OF STRUCTURAL WORK",
-                client: "ARAMCO",
-                type: "Fabrication & Erection",
-                timeline: "11 Months",
-                location: "Jubail",
-                value: "6.7 Million SAR",
-                status: "ONGOING PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/three-1.png",
                     "projects/three-2.png",
@@ -305,15 +297,6 @@
             {
                 id: 4,
                 title: "FABRICATION/INSTALLATION OF RTR LINE",
-                subtitle: "6.7 KM GRE PIPELINE",
-                client: "GAS ARABIA",
-                type: "Fabrication & Installation",
-                timeline: "09 Months",
-                location: "Jubail",
-                value: "7.4 Million SAR",
-                status: "ONGOING PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/four.png",
                 ]
@@ -321,15 +304,6 @@
             {
                 id: 5,
                 title: "CONSTRUCTION OF 42” DOWN STREAM PIPELINE",
-                subtitle: "16 KM PIPELINE JUBAIL AREA",
-                client: "NBC/DENYS",
-                type: "Fabrication & Installation",
-                timeline: "13 Months",
-                location: "Jubail",
-                value: "37 Million SAR",
-                status: "ONGOING PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/five.png",
                 ]
@@ -337,35 +311,16 @@
             {
                 id: 6,
                 title: "FABRICAITON & REPLACEMENT OF PP DISCHARGE VESSEL & STR",
-                subtitle: "Replacement of Vessel",
-                client: "TASNEE",
-                type: "Replacement of Vessel",
-                timeline: "07 months",
-                location: "Jubail",
-                value: "2.9 Million SAR",
-                status: "COMPLETED PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/six-1.png",
                     "projects/six-2.png",
                     "projects/six-3.png",
                     "projects/six-4.png",
-
                 ]
             },
             {
                 id: 7,
                 title: "REPLACEMENT OF HEAT EXCHANGERS",
-                subtitle: "Shutdown Work",
-                client: "SHARQ",
-                type: "Replacement of Vessel",
-                timeline: "3 months",
-                location: "Jubail",
-                value: "1.6 Million SAR",
-                status: "COMPLETED PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/seven.png",
                 ]
@@ -373,32 +328,14 @@
             {
                 id: 8,
                 title: "EXCHANGER SHELL REPAIR WORK & TCF DEVELOPMENT",
-                subtitle: "Development of Technical Construction Facility (TCF)",
-                client: "ARAMCO",
-                type: "TCF Development & Repair",
-                timeline: "09 MONTHS",
-                location: "JUBAIL",
-                value: "2.9 MILLION SAR",
-                status: "COMPLETED PROJECT",
-                isAramco: false,
-                category: "Project",
                 images: [
                     "projects/eight.png",
                 ]
             },
-            // --- Specialized Capabilities (New) ---
+            // --- Specialized Capabilities (Now treated as general projects) ---
             {
                 id: 9,
                 title: "PRE-CASTING OF FOUNDATIONS",
-                subtitle: "Ensuring structural integrity with ARAMCO standards.",
-                client: "ARAMCO",
-                type: "Civil Works Capability",
-                timeline: "N/A",
-                location: "Various Sites",
-                value: "N/A",
-                status: "STANDARD CAPABILITY",
-                isAramco: false,
-                category: "Capability",
                 images: [
                     "projects/nine-1.png",
                     "projects/nine-2.png",
@@ -409,15 +346,6 @@
             {
                 id: 10,
                 title: "CASTING OF STRUCTURAL COLUMNS",
-                subtitle: "Advanced techniques for industrial support structures.",
-                client: "ARAMCO",
-                type: "Civil Works Capability",
-                timeline: "N/A",
-                location: "Various Sites",
-                value: "N/A",
-                status: "STANDARD CAPABILITY",
-                isAramco: false,
-                category: "Capability",
                 images: [
                     "projects/ten.png",
                 ]
@@ -425,15 +353,6 @@
             {
                 id: 11,
                 title: "TCF DEVELOPMENT",
-                subtitle: "Technical Construction Facility setup as per ARAMCO guidelines.",
-                client: "ARAMCO",
-                type: "Facility Development",
-                timeline: "N/A",
-                location: "Various Sites",
-                value: "N/A",
-                status: "STANDARD CAPABILITY",
-                isAramco: false,
-                category: "Capability",
                 images: [
                     "projects/eleven-1.png",
                     "projects/eleven-2.png",
@@ -441,54 +360,91 @@
             }
         ];
 
-        let flattenedGallery = [];
+        let flattenedGallery = []; // Used to store ALL images for lightbox navigation
         let currentImageIndex = 0;
 
         // --- Core Functions ---
 
         /**
-         * Flattens the nested images array into a single array of objects
-         * and ensures any image added to projectsData is automatically included.
+         * Renders the image gallery with custom headings based on project index.
+         * The function also flattens all images into the `flattenedGallery` array for the lightbox.
          */
-        function flattenImages() {
-            flattenedGallery = [];
-            projectsData.forEach(project => {
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            container.innerHTML = ''; 
+            flattenedGallery = []; // Reset gallery for flattening
+            
+            let htmlContent = '';
+            let lastSection = null;
+            
+            if (projectsData.length === 0) {
+                container.innerHTML = '<p class="text-center text-gray-400">No project images available to display in the gallery.</p>';
+                return;
+            }
+
+            projectsData.forEach((project, projectIndex) => {
+                let currentSection;
+
+                if (projectIndex === 0) {
+                    currentSection = "Our Office";
+                } else if (projectIndex === 1) {
+                    currentSection = "Workshop";
+                } else {
+                    currentSection = "Projects";
+                }
+                
+                // Check if the section header needs to be rendered
+                // This ensures "Projects" only gets one header, and others get their specific header.
+                if (currentSection !== lastSection) {
+                    // Close the previous grid container if it existed
+                    if (lastSection !== null) {
+                        htmlContent += '</div>';
+                    }
+                    
+                    // Render new header and start a new grid container
+                    htmlContent += `
+                        <h2 class="text-4xl font-display text-gold-accent mt-16 mb-8 uppercase font-bold text-center border-b border-gold-accent/50 pb-4">
+                            ${currentSection}
+                        </h2>
+                        <!-- Start of a new responsive grid for this section -->
+                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
+                    `;
+                    lastSection = currentSection;
+                }
+
+                // Render images for the current project within the current section's grid
                 if (project.images && project.images.length > 0) {
                     project.images.forEach(imagePath => {
+                        const imageIndex = flattenedGallery.length; // The index for the lightbox
+                        
+                        // 1. Add to flattenedGallery for lightbox (essential for navigation)
                         flattenedGallery.push({
                             src: imagePath,
                             projectTitle: project.title
                         });
+
+                        // 2. Render grid item
+                        htmlContent += `
+                            <div class="gallery-item" onclick="openLightbox(${imageIndex})">
+                                <img src="${imagePath}" alt="${project.title}" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0D0D0D/faa412?text=Image+Loading+Error';" class="w-full h-full object-cover aspect-[4/3]">
+                                <div class="gallery-caption">
+                                    <p class="text-xs text-gold-accent font-semibold">${project.title}</p>
+                                </div>
+                            </div>
+                        `;
                     });
                 }
             });
-        }
-
-        /**
-         * Renders the image grid on the page.
-         */
-        function renderGallery() {
-            flattenImages();
-            const grid = document.getElementById('gallery-grid');
-            grid.innerHTML = ''; // Clear previous content
-
-            if (flattenedGallery.length === 0) {
-                grid.innerHTML = '<p class="text-center col-span-full text-gray-400">No project images available to display in the gallery.</p>';
-                return;
+            
+            // Close the last grid div
+            if (lastSection !== null) {
+                htmlContent += '</div>';
             }
-
-            flattenedGallery.forEach((imageObj, index) => {
-                const itemHtml = `
-                    <div class="gallery-item" onclick="openLightbox(${index})">
-                        <img src="${imageObj.src}" alt="${imageObj.projectTitle}" class="w-full h-full object-cover aspect-[4/3]">
-                        <div class="gallery-caption">
-                            <p class="text-xs text-gold-accent font-semibold">${imageObj.projectTitle}</p>
-                        </div>
-                    </div>
-                `;
-                grid.insertAdjacentHTML('beforeend', itemHtml);
-            });
+            
+            // Inject all generated HTML into the main container
+            container.innerHTML = htmlContent;
         }
+
 
         /**
          * Opens the lightbox modal to the specified image index.
@@ -508,7 +464,7 @@
         function closeLightbox(event) {
             const lightboxModal = document.getElementById('lightbox-modal');
             
-            // Fix: Check if the click occurred on the modal overlay itself (ID) or the close button (ID) or anything inside the close button (closest)
+            // Check if the click occurred on the modal overlay itself or the close button/its children
             if (event.target === lightboxModal || event.target.closest('#close-btn')) {
                 lightboxModal.style.display = 'none';
                 document.body.style.overflow = 'auto'; // Restore scrolling
@@ -525,6 +481,12 @@
             const totalImages = flattenedGallery.length;
 
             document.getElementById('lightbox-image').src = imageObj.src;
+            // Add error fallback for lightbox image
+            document.getElementById('lightbox-image').onerror = function() {
+                this.onerror=null; 
+                this.src='https://placehold.co/800x600/000000/faa412?text=Image+Not+Found';
+            };
+            
             document.getElementById('lightbox-project-title').textContent = imageObj.projectTitle;
             document.getElementById('lightbox-index').textContent = `Photo ${currentImageIndex + 1} of ${totalImages}`;
 
@@ -551,7 +513,7 @@
 
         // --- Event Listeners ---
         window.onload = () => {
-            // Render the gallery grid when the page loads
+            // Render the gallery grid with groupings when the page loads
             renderGallery();
             
             // Mobile Menu Toggle Logic
@@ -570,6 +532,7 @@
                 if (isLightboxOpen) {
                     if (e.key === 'Escape') {
                         // Simulate click on overlay element to trigger closeLightbox logic
+                        // Need to pass an object that matches the event.target === lightboxModal check
                         closeLightbox({ target: document.getElementById('lightbox-modal') }); 
                     } else if (e.key === 'ArrowLeft') {
                         navigateImage(-1);
