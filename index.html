@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Gold Construction - Home</title>
     
-    <!-- Load Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+
+    <!-- Social Media Meta Tags (Open Graph for Facebook/LinkedIn/General) --><meta property="og:title" content="Black Gold Construction: Industrial Services Leader in KSA">
+    <meta property="og:description" content="Specializing in Civil, Mechanical, and Electrical & Instrumentation disciplines across the Kingdom of Saudi Arabia. Dynamic solutions for complex industrial projects.">
+    <meta property="og:image" content="images/construction.jpg">
+    <meta property="og:url" content="[Your Website URL Here]">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags --><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Black Gold Construction">
+    <meta name="twitter:description" content="Driving success through expertise in industrial construction and engineering services in the KSA.">
+    <meta name="twitter:image" content="images/construction.jpg">
     
-    <!-- Custom Tailwind Configuration (Moved to a dedicated script for reliability) -->
-    <script>
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
         tailwind.config = {
           theme: {
             extend: {
@@ -28,18 +39,45 @@
         }
     </script>
     
-    <!-- Load Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* Custom CSS only for the complex Hero background property */
-        .hero-bg {
-             /* Placeholder for a powerful industrial image */
-             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('construction.jpg') no-repeat center center/cover;
+        /* New CSS for Carousel Container */
+        .hero-carousel-container {
+            position: relative;
+            overflow: hidden;
+            /* Matches previous section padding */
+            padding-top: 9rem; 
+            padding-bottom: 9rem; 
         }
-	.vision-bg {
-             /* Placeholder for a powerful industrial image */
-             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('vision_bg.jpg') no-repeat center center/cover;
+        
+        /* Carousel Slide Styling (Absolute position, cover size, transition) */
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smooth transition for cross-fade effect */
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        
+        /* Dark Overlay for Text Readability */
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.7); /* Dark overlay */
+            z-index: 10;
+        }
+        
+        /* Vision Background (Kept for other sections) */
+        .vision-bg {
+             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/vision_bg.jpg') no-repeat center center/cover;
         }
 
         /* To override Tailwind's default list-style behavior for the navigation */
@@ -52,62 +90,65 @@
 </head>
 <body class="font-sans bg-black-primary text-white min-h-screen">
 
-    <!-- Header & Navigation -->
-    <header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
-            <!-- Top Bar: Logo and Mobile Menu Button -->
-            <div class="flex justify-between items-center">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
                 <a href="#" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
                     <span>BLACK GOLD CONSTRUCTION</span>
                 </a>
                 
-                <!-- Mobile Menu Toggle Button -->
-                <button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
-                    <!-- Hamburger Icon (Simple SVG) -->
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
             
-            <!-- Navigation Links (Collapsible) -->
-            <nav id="nav-menu" class="hidden md:block w-full">
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
                 <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
                     <li><a href="#" class="text-white text-lg font-medium hover:text-gold-accent border-b-2 border-gold-accent pb-1 transition duration-300">Home</a></li>
-                    <li><a href="#services-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
-                    <li><a href="#projects-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
-                    <li><a href="#gallery-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
-                    <li><a href="#careers-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
-                    <li><a href="#contact-us-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                    <li><a href="services.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <li><a href="projects.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <li><a href="gallery.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="careers.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <li><a href="contact.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-bg text-center py-36 md:py-60 relative">
-        <div class="absolute inset-0 bg-black/60 z-0"></div> <!-- Dark overlay -->
-        <div class="relative z-10 max-w-4xl mx-auto px-4">
+    <!-- Hero Section Updated to Carousel --><section class="hero-carousel-container text-center py-36 md:py-60 relative">
+        <!-- Carousel Slides (Stock Image Placeholders) -->
+        <div id="slide-1" class="carousel-slide active" style="background-image: url('images/slider1.jpg');"></div>
+        <div id="slide-2" class="carousel-slide" style="background-image: url('images/slider2.jpg');"></div>
+        <div id="slide-3" class="carousel-slide" style="background-image: url('images/slider3.jpg');"></div>
+        <div id="slide-4" class="carousel-slide" style="background-image: url('images/slider4.jpg');"></div>
+        <div id="slide-5" class="carousel-slide" style="background-image: url('images/slider5.jpg');"></div>
+        <div id="slide-6" class="carousel-slide" style="background-image: url('images/slider6.jpg');"></div>
+
+        <!-- Dark Overlay -->
+        <div class="carousel-overlay"></div> 
+
+        <!-- Hero Content (Relative Z-index to Overlay) --><div class="relative z-20 max-w-4xl mx-auto px-4">
             <h1 class="font-display text-5xl md:text-7xl text-gold-accent mb-4 leading-tight uppercase font-bold">
-                Dynamic Leadership in Industrial Services
+                DYNAMIC LEADERSHIP IN INDUSTRIAL SERVICES
             </h1>
             <p class="text-xl md:text-2xl text-gray-200 mb-10">
-                Specializing in Civil, Mechanical, and Electrical & Instrumentation disciplines across the Kingdom of Saudi Arabia.
+                Specializing in Civil, Mechanical, and Electrical & Instrumentation Disciplines Across the Kingdom of Saudi Arabia.
             </p>
             <a href="#about-us" class="inline-block bg-gold-accent text-black-primary py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
-                Learn More About Us
+                LEARN MORE ABOUT US
             </a>
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about-us" class="bg-black-secondary py-20 text-center">
+    <!-- Who We Are Section --><section id="about-us" class="bg-black-secondary py-20 text-center">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-10 uppercase font-bold">
-                Who We Are
+                WHO WE ARE
             </h2>
             <div class="flex flex-col lg:flex-row justify-center items-start gap-8 lg:gap-16 text-left">
                 <div class="flex-1 px-4">
                     <p class="text-lg mb-6 text-gray-300">
-                        Black Gold Construction Company stands as a dynamic leader in the industrial services sector, bringing a wealth of expertise to every project. Since its founding in 2018, Black Gold Group has firmly established itself as a pillar of excellence in the Kingdom of Saudi Arabia, with a distinguished legacy of accomplishments and a commitment to sustained growth.
+                        BLACK GOLD CONSTRUCTION Company stands as a dynamic leader in the industrial services sector, bringing a wealth of expertise to every project. Since its founding in 2018, Black Gold Group has firmly established itself as a pillar of excellence in the Kingdom of Saudi Arabia, with a distinguished legacy of accomplishments and a commitment to sustained growth.
                     </p>
                     <p class="text-lg mb-6 text-gray-300">
                         We leverage our extensive expertise in engineering, consulting, and project management to deliver impactful solutions that drive value on both national and global scales. Our comprehensive range of services is meticulously tailored to meet the unique needs of our clients, ensuring top-notch solutions that drive growth, efficiency, and success.
@@ -136,11 +177,10 @@
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
-    <section class="bg-black-primary py-20 text-center vision-bg">
+    <!-- Mission & Vision Section --><section class="bg-black-primary py-20 text-center vision-bg">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-10 uppercase font-bold">
-                Our Purpose & Future
+                OUR PURPOSE & FUTURE
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 text-left">
                 <div class="bg-black-secondary p-8 rounded-xl shadow-2xl border-t-4 border-gold-accent">
@@ -155,11 +195,10 @@
         </div>
     </section>
 
-    <!-- Key Metrics Section -->
-    <section class="bg-black-secondary py-20 text-center">
+    <!-- Stats Section --><section class="bg-black-secondary py-20 text-center">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-10 uppercase font-bold">
-                Driving Success Through Expertise
+                DRIVING SUCCESS THROUGH EXPERTISE
             </h2>
             <div class="flex flex-wrap justify-center gap-8">
                 
@@ -186,29 +225,84 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black-primary py-10 border-t border-gold-accent">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-400 text-sm">
-            <p class="mb-3">&copy; 2025 Black Gold Construction Company. All rights reserved.</p>
-            <div class="space-x-4">
-                <!-- Social Links (Using Font Awesome classes) -->
-                <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
-                <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+    <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                
+                <!-- Column 1: Logo & Company Description -->
+                <div class="md:col-span-2">
+                    <a href="#" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
+                        <span>BLACK GOLD CONSTRUCTION</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Social Links -->
+                        <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (Navigation) -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-gold-accent transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-gold-accent transition duration-300">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-gold-accent transition duration-300">Projects</a></li>
+                        <li><a href="gallery.html" class="hover:text-gold-accent transition duration-300">Gallery</a></li>
+                        <li><a href="careers.html" class="hover:text-gold-accent transition duration-300">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-gold-accent transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Location -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Contact Details</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <!-- Updated Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <!-- Updated Phone Number --><span><a href="tel:+966509702239" class="hover:text-gold-accent transition duration-300">+966 50 970 2239</a></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal/Copyright Line -->
+            <div class="mt-12 pt-8 border-t border-black-primary text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved. | <a href="#" class="hover:text-gold-accent transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-gold-accent transition duration-300">Terms of Use</a></p>
             </div>
         </div>
     </footer>
 
-    <!-- Font Awesome for social icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                // Check if the target is a valid ID on this page
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    // Fallback for links pointing to other pages' sections (not smooth on current page)
+                    window.location.href = targetId;
+                }
             });
         });
 
@@ -223,7 +317,25 @@
                 navMenu.classList.toggle('block');
             });
         }
+        
+        // Carousel Logic
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        const slideInterval = 5000; // 5 seconds transition delay
+
+        function nextSlide() {
+            // Remove active class from current slide
+            slides[currentSlide].classList.remove('active');
+            
+            // Advance to the next slide (loop back to 0)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Add active class to the new current slide
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Start the automatic rotation
+        setInterval(nextSlide, slideInterval);
     </script>
 </body>
 </html>
-

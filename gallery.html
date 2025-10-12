@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Gold Construction - Project Gallery</title>
+    
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+    
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'black-primary': '#000000',     /* Pure Black */
+                'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
+                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-hover': '#AE933B',        /* Darker Gold for hover state */
+              },
+              fontFamily: {
+                'sans': ['Roboto', 'sans-serif'],
+                'display': ['Oswald', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Dark Overlay for Hero Text Readability */
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('images/slider2.jpg') no-repeat center center/cover;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        /* To override Tailwind's default list-style behavior for the navigation */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Gallery Grid Item Hover Effect */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-xl */
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Lightbox Overlay Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="font-sans bg-black-primary text-white min-h-screen">
+
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
+                <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
+                    <li><a href="index.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Home</a></li>
+                    <li><a href="services.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <li><a href="projects.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <!-- Active Link --><li><a href="#" class="text-white text-lg font-medium border-b-2 border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="careers.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <li><a href="contact.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Gallery Hero Section --><section class="hero-overlay text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="font-display text-5xl md:text-6xl text-gold-accent mb-4 leading-tight uppercase font-bold">
+                PROJECT PHOTO GALLERY
+            </h1>
+            <p class="text-xl text-gray-200">
+                A visual showcase of our expertise across Civil, Mechanical, and E&I fields. Every image represents a successful phase of work.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Gallery Grid -->
+    <main class="bg-black-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <!-- Removed the H2 heading "ALL PROJECT IMAGES" as requested -->
+
+            <!-- Dynamic Image Grid -->
+            <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Image cards generated here by JS -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Image Lightbox Modal (Hidden by Default) -->
+    <div id="lightbox-modal" class="lightbox-overlay" onclick="closeLightbox(event)">
+        <div class="relative max-w-6xl w-full h-full p-4 md:p-8 flex items-center justify-center">
+            
+            <!-- Close Button - ADDED ID FOR CLOSING FIX -->
+            <button id="close-btn" onclick="closeLightbox(event)" class="absolute top-4 right-4 text-gold-accent hover:text-white transition duration-300 z-30 p-2 rounded-full bg-black/50">
+                <!-- X Icon --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Image Container -->
+            <div onclick="event.stopPropagation()" class="relative w-full h-full max-h-[85vh] flex items-center justify-center">
+                <img id="lightbox-image" src="" alt="Project Gallery Image" class="max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-opacity duration-300">
+                
+                <!-- Image Caption/Context -->
+                <div id="lightbox-caption" class="absolute bottom-0 left-0 right-0 bg-black/70 p-4 rounded-b-lg">
+                    <p id="lightbox-project-title" class="text-lg font-display text-gold-accent font-bold uppercase"></p>
+                    <p id="lightbox-index" class="text-sm text-gray-300"></p>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button onclick="navigateImage(-1)" id="prev-btn" class="absolute left-0 top-1/2 transform -translate-y-1/2 ml-2 bg-black/50 text-white p-3 hover:bg-black/80 transition duration-300 rounded-full disabled:opacity-30 disabled:cursor-not-allowed z-10">
+                    <!-- Chevron Left --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="navigateImage(1)" id="next-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 mr-2 bg-black/50 text-white p-3 hover:bg-black/80 transition duration-300 rounded-full disabled:opacity-30 disabled:cursor-not-allowed z-10">
+                    <!-- Chevron Right --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                
+                <!-- Column 1: Logo & Company Description -->
+                <div class="md:col-span-2">
+                    <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
+                        <span>BLACK GOLD CONSTRUCTION</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Social Links -->
+                        <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (Navigation) -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-gold-accent transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-gold-accent transition duration-300">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-gold-accent transition duration-300">Projects</a></li>
+                        <li><a href="#" class="hover:text-gold-accent transition duration-300">Gallery</a></li>
+                        <li><a href="careers.html" class="hover:text-gold-accent transition duration-300">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-gold-accent transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Location -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Contact Details</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <!-- Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <!-- Phone Number --><span><a href="tel:+966509702239" class="hover:text-gold-accent transition duration-300">+966 50 970 2239</a></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal/Copyright Line -->
+            <div class="mt-12 pt-8 border-t border-black-primary text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved. | <a href="#" class="hover:text-gold-accent transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-gold-accent transition duration-300">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // --- Project Data Structure (Copied from projects.html for independent functionality) ---
+        const projectsData = [
+        {
+                id: -10,
+                title: "Office",
+                images: [
+                    "projects/office-1.png",
+                    "projects/office-2.png",
+                    "projects/office-3.png",
+                    "projects/office-4.png",
+                ]
+            },
+            {
+                id: -5,
+                title: "Workshop",
+                images: [
+                    "projects/workshop.png",
+                ]
+            },
+        // --- Main Projects ---
+            {
+                id: 1,
+                title: "CONSTRUCTION OF SWCC TANK",
+                subtitle: "Construction of Two Tanks",
+                client: "GSW",
+                type: "Fabrication & Erection",
+                timeline: "2.5 Years", 
+                location: "RIYADH",
+                value: "27 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/one.png"
+                ]
+            },{
+                id: 2,
+                title: "BOTTOM REPLACEMENT OF DEMIN WATER TANK (UNITED)",
+                subtitle: "REPLACEMENT OF BOTTOM, SKETCH & ANNULAR PLATES",
+                client: "UNITED",
+                type: "Bottom Replacement",
+                timeline: "8 months",
+                location: "Jubail",
+                value: "3.3 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/two.png"
+                ]
+            },{
+                id: 3,
+                title: "FABRICATION & REPLACEMENT OF PIPING & STR VALVE STATIONS...",
+                subtitle: "31,000 INCH-DIA PIPING & 822 TONNAGE OF STRUCTURAL WORK",
+                client: "ARAMCO",
+                type: "Fabrication & Erection",
+                timeline: "11 Months",
+                location: "Jubail",
+                value: "6.7 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/three-1.png",
+                    "projects/three-2.png",
+                    "projects/three-3.png",
+                    "projects/three-4.png",
+                ]
+            },
+            {
+                id: 4,
+                title: "FABRICATION/INSTALLATION OF RTR LINE",
+                subtitle: "6.7 KM GRE PIPELINE",
+                client: "GAS ARABIA",
+                type: "Fabrication & Installation",
+                timeline: "09 Months",
+                location: "Jubail",
+                value: "7.4 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/four.png",
+                ]
+            },
+            {
+                id: 5,
+                title: "CONSTRUCTION OF 42” DOWN STREAM PIPELINE",
+                subtitle: "16 KM PIPELINE JUBAIL AREA",
+                client: "NBC/DENYS",
+                type: "Fabrication & Installation",
+                timeline: "13 Months",
+                location: "Jubail",
+                value: "37 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/five.png",
+                ]
+            },
+            {
+                id: 6,
+                title: "FABRICAITON & REPLACEMENT OF PP DISCHARGE VESSEL & STR",
+                subtitle: "Replacement of Vessel",
+                client: "TASNEE",
+                type: "Replacement of Vessel",
+                timeline: "07 months",
+                location: "Jubail",
+                value: "2.9 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/six-1.png",
+                    "projects/six-2.png",
+                    "projects/six-3.png",
+                    "projects/six-4.png",
+
+                ]
+            },
+            {
+                id: 7,
+                title: "REPLACEMENT OF HEAT EXCHANGERS",
+                subtitle: "Shutdown Work",
+                client: "SHARQ",
+                type: "Replacement of Vessel",
+                timeline: "3 months",
+                location: "Jubail",
+                value: "1.6 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/seven.png",
+                ]
+            },
+            {
+                id: 8,
+                title: "EXCHANGER SHELL REPAIR WORK & TCF DEVELOPMENT",
+                subtitle: "Development of Technical Construction Facility (TCF)",
+                client: "ARAMCO",
+                type: "TCF Development & Repair",
+                timeline: "09 MONTHS",
+                location: "JUBAIL",
+                value: "2.9 MILLION SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/eight.png",
+                ]
+            },
+            // --- Specialized Capabilities (New) ---
+            {
+                id: 9,
+                title: "PRE-CASTING OF FOUNDATIONS",
+                subtitle: "Ensuring structural integrity with ARAMCO standards.",
+                client: "ARAMCO",
+                type: "Civil Works Capability",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/nine-1.png",
+                    "projects/nine-2.png",
+                    "projects/nine-3.png",
+                    "projects/nine-4.png",
+                ]
+            },
+            {
+                id: 10,
+                title: "CASTING OF STRUCTURAL COLUMNS",
+                subtitle: "Advanced techniques for industrial support structures.",
+                client: "ARAMCO",
+                type: "Civil Works Capability",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/ten.png",
+                ]
+            },
+            {
+                id: 11,
+                title: "TCF DEVELOPMENT",
+                subtitle: "Technical Construction Facility setup as per ARAMCO guidelines.",
+                client: "ARAMCO",
+                type: "Facility Development",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/eleven-1.png",
+                    "projects/eleven-2.png",
+                ]
+            }
+        ];
+
+        let flattenedGallery = [];
+        let currentImageIndex = 0;
+
+        // --- Core Functions ---
+
+        /**
+         * Flattens the nested images array into a single array of objects
+         * and ensures any image added to projectsData is automatically included.
+         */
+        function flattenImages() {
+            flattenedGallery = [];
+            projectsData.forEach(project => {
+                if (project.images && project.images.length > 0) {
+                    project.images.forEach(imagePath => {
+                        flattenedGallery.push({
+                            src: imagePath,
+                            projectTitle: project.title
+                        });
+                    });
+                }
+            });
+        }
+
+        /**
+         * Renders the image grid on the page.
+         */
+        function renderGallery() {
+            flattenImages();
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = ''; // Clear previous content
+
+            if (flattenedGallery.length === 0) {
+                grid.innerHTML = '<p class="text-center col-span-full text-gray-400">No project images available to display in the gallery.</p>';
+                return;
+            }
+
+            flattenedGallery.forEach((imageObj, index) => {
+                const itemHtml = `
+                    <div class="gallery-item" onclick="openLightbox(${index})">
+                        <img src="${imageObj.src}" alt="${imageObj.projectTitle}" class="w-full h-full object-cover aspect-[4/3]">
+                        <div class="gallery-caption">
+                            <p class="text-xs text-gold-accent font-semibold">${imageObj.projectTitle}</p>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', itemHtml);
+            });
+        }
+
+        /**
+         * Opens the lightbox modal to the specified image index.
+         * @param {number} index - The index of the image in the flattenedGallery array.
+         */
+        function openLightbox(index) {
+            currentImageIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox-modal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        /**
+         * Closes the lightbox modal.
+         * @param {Event} event - The click event to check if click occurred on overlay or close button.
+         */
+        function closeLightbox(event) {
+            const lightboxModal = document.getElementById('lightbox-modal');
+            
+            // Fix: Check if the click occurred on the modal overlay itself (ID) or the close button (ID) or anything inside the close button (closest)
+            if (event.target === lightboxModal || event.target.closest('#close-btn')) {
+                lightboxModal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }
+        }
+
+        /**
+         * Updates the image source and captions in the lightbox.
+         */
+        function updateLightbox() {
+            if (flattenedGallery.length === 0) return;
+
+            const imageObj = flattenedGallery[currentImageIndex];
+            const totalImages = flattenedGallery.length;
+
+            document.getElementById('lightbox-image').src = imageObj.src;
+            document.getElementById('lightbox-project-title').textContent = imageObj.projectTitle;
+            document.getElementById('lightbox-index').textContent = `Photo ${currentImageIndex + 1} of ${totalImages}`;
+
+            // Update button states
+            document.getElementById('prev-btn').disabled = currentImageIndex === 0;
+            document.getElementById('next-btn').disabled = currentImageIndex === totalImages - 1;
+        }
+
+        /**
+         * Navigates to the next or previous image.
+         * @param {number} direction - -1 for previous, 1 for next.
+         */
+        function navigateImage(direction) {
+            // Stop event propagation to prevent the closeLightbox function on the overlay from triggering
+            event.stopPropagation();
+            
+            const newIndex = currentImageIndex + direction;
+            if (newIndex >= 0 && newIndex < flattenedGallery.length) {
+                currentImageIndex = newIndex;
+                updateLightbox();
+            }
+        }
+
+
+        // --- Event Listeners ---
+        window.onload = () => {
+            // Render the gallery grid when the page loads
+            renderGallery();
+            
+            // Mobile Menu Toggle Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('hidden');
+                    navMenu.classList.toggle('block');
+                });
+            }
+
+            // Close modal on escape key press and navigate with arrows
+            document.addEventListener('keydown', (e) => {
+                const isLightboxOpen = document.getElementById('lightbox-modal').style.display === 'flex';
+                if (isLightboxOpen) {
+                    if (e.key === 'Escape') {
+                        // Simulate click on overlay element to trigger closeLightbox logic
+                        closeLightbox({ target: document.getElementById('lightbox-modal') }); 
+                    } else if (e.key === 'ArrowLeft') {
+                        navigateImage(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateImage(1);
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>

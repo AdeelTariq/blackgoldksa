@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Gold Construction - Contact Us</title>
+    
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+    
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'black-primary': '#000000',     /* Pure Black */
+                'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
+                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-hover': '#AE933B',        /* Darker Gold for hover state */
+              },
+              fontFamily: {
+                'sans': ['Roboto', 'sans-serif'],
+                'display': ['Oswald', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Dark Overlay for Hero Text Readability */
+        .hero-overlay {
+            /* Using a placeholder image for a professional look */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('images/slider6.jpg') no-repeat center center/cover;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        /* To override Tailwind's default list-style behavior for the navigation */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Responsive Map Container */
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+            height: 0;
+            border-radius: 0.75rem; /* rounded-xl */
+        }
+
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+        
+        /* Custom Button Style for the Form */
+        .submit-btn {
+            background-color: #FFD700;
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #AE933B;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="font-sans bg-black-primary text-white min-h-screen">
+
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
+                <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
+                    <li><a href="index.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Home</a></li>
+                    <li><a href="services.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <li><a href="projects.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <li><a href="gallery.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="index.html#careers-link" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <!-- Active Link --><li><a href="#" class="text-white text-lg font-medium border-b-2 border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Hero Section --><section class="hero-overlay text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="font-display text-5xl md:text-6xl text-gold-accent mb-4 leading-tight uppercase font-bold">
+                LET'S BUILD SOMETHING GREAT
+            </h1>
+            <p class="text-xl text-gray-200">
+                Get in touch with our team today to discuss your industrial project needs.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Form and Details Section -->
+    <main class="bg-black-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-black-primary p-8 md:p-12 rounded-xl shadow-2xl border border-gold-accent/20">
+                
+                <!-- Left Column: Contact Details -->
+                <div>
+                    <h2 class="text-4xl font-display text-gold-accent mb-6 uppercase font-bold">
+                        Our Information
+                    </h2>
+                    <p class="text-gray-300 mb-8 text-lg">
+                        We are here to answer your questions and provide quick solutions. Reach out to us through the details below or use the contact form.
+                    </p>
+
+                    <!-- Contact Info Blocks -->
+                    <div class="space-y-8">
+                        
+                        <!-- Address -->
+                        <div class="flex items-start space-x-4">
+                            <!-- Location Icon (SVG) --><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-gold-accent mt-1 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <div>
+                                <h3 class="text-xl font-display text-white font-bold">Head Office</h3>
+                                <p class="text-gray-400">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start space-x-4">
+                            <!-- Phone Icon (SVG) --><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-gold-accent mt-1 flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <div>
+                                <h3 class="text-xl font-display text-white font-bold">Call Us</h3>
+                                <a href="tel:+966509702239" class="text-gray-400 hover:text-gold-accent transition duration-300">+966 50 970 2239</a>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start space-x-4">
+                            <!-- Mail Icon (SVG) --><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 text-gold-accent mt-1 flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <div>
+                                <h3 class="text-xl font-display text-white font-bold">Email</h3>
+                                <a href="mailto:info@blackgoldksa.com" class="text-gray-400 hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div>
+                    <h2 class="text-4xl font-display text-gold-accent mb-6 uppercase font-bold">
+                        Send Us A Message
+                    </h2>
+                    
+                    <!-- UPDATED: Form now posts to FormSubmit and specifies the redirect page -->
+                    <form id="contact-form" class="space-y-6" action="https://formsubmit.co/adeeltariqagain@gmail.com" method="POST">
+                        
+                        <!-- FormSubmit Hidden Field for Redirection to thank_you.html -->
+                        <input type="hidden" name="_next" value="thank_you.html">
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <!-- Name Input -->
+                        <div class="relative">
+                            <input type="text" id="name" name="name" placeholder="Full Name" required 
+                                class="w-full bg-black-secondary text-white border border-gold-accent/50 focus:border-gold-accent focus:ring-1 focus:ring-gold-accent rounded-lg py-3 px-4 transition duration-300 placeholder-gray-500">
+                        </div>
+
+                        <!-- Email Input -->
+                        <div class="relative">
+                            <input type="email" id="email" name="email" placeholder="Work Email" required 
+                                class="w-full bg-black-secondary text-white border border-gold-accent/50 focus:border-gold-accent focus:ring-1 focus:ring-gold-accent rounded-lg py-3 px-4 transition duration-300 placeholder-gray-500">
+                        </div>
+                        
+                        <!-- Subject/Company Input -->
+                        <div class="relative">
+                            <input type="text" id="subject" name="subject" placeholder="Subject or Company Name" 
+                                class="w-full bg-black-secondary text-white border border-gold-accent/50 focus:border-gold-accent focus:ring-1 focus:ring-gold-accent rounded-lg py-3 px-4 transition duration-300 placeholder-gray-500">
+                        </div>
+
+                        <!-- Message Textarea -->
+                        <div class="relative">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Project Details or Query" required 
+                                class="w-full bg-black-secondary text-white border border-gold-accent/50 focus:border-gold-accent focus:ring-1 focus:ring-gold-accent rounded-lg py-3 px-4 transition duration-300 placeholder-gray-500"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="submit-btn w-full text-lg font-display uppercase font-bold py-3 rounded-lg shadow-md">
+                            Submit Inquiry
+                        </button>
+                    </form>
+
+                    <!-- Submission Status Message (No longer used by JS, kept for general purpose) -->
+                    <div id="status-message" class="mt-4 text-center hidden p-3 rounded-lg font-medium"></div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    
+    <!-- Google Map Section -->
+    <section class="bg-black-primary py-16">
+        <div class="max-w-7xl mx-auto px-4">
+             <h2 class="text-4xl font-display text-gold-accent text-center mb-10 border-b border-gold-accent/50 pb-4 uppercase font-bold">
+                Find Our Location
+            </h2>
+            
+            <!-- Map Container with 16:9 aspect ratio -->
+            <div class="map-container shadow-2xl">
+                <!-- Google Maps Embed Placeholder -->
+                <!-- Coordinates for Al Jubail: 26.986744, 49.655514 -->
+                <iframe 
+                    src="https://maps.google.com/maps?q=26.986744,49.655514&t=&z=16&ie=UTF8&iwloc=B&output=embed" 
+                    frameborder="0" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"
+                    title="Google Map Location of Black Gold Construction Office"
+                ></iframe>
+            </div>
+            <p class="text-center text-sm text-gray-500 mt-4">
+                Our main office is strategically located in Al Jubail to serve major industrial areas in the Kingdom.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                
+                <!-- Column 1: Logo & Company Description -->
+                <div class="md:col-span-2">
+                    <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
+                        <span>BLACK GOLD CONSTRUCTION</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Social Links -->
+                        <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (Navigation) -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-gold-accent transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-gold-accent transition duration-300">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-gold-accent transition duration-300">Projects</a></li>
+                        <li><a href="gallery.html" class="hover:text-gold-accent transition duration-300">Gallery</a></li>
+                        <li><a href="careers.html" class="hover:text-gold-accent transition duration-300">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-gold-accent transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Location -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Contact Details</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <!-- Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <!-- Phone Number --><span><a href="tel:+966509702239" class="hover:text-gold-accent transition duration-300">+966 50 970 2239</a></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal/Copyright Line -->
+            <div class="mt-12 pt-8 border-t border-black-primary text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved. | <a href="#" class="hover:text-gold-accent transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-gold-accent transition duration-300">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // --- Core JavaScript Logic ---
+
+        // Mobile Menu Toggle Logic
+        window.onload = () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('hidden');
+                    navMenu.classList.toggle('block');
+                });
+            }
+            
+            // NOTE: The form submission is now handled by the native HTML form POST
+            // to FormSubmit, which handles the redirection to 'thank_you.html'.
+            // The previous JavaScript listener has been removed.
+        };
+    </script>
+</body>
+</html>

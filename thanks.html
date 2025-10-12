@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Black Gold Construction</title>
+    
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+    
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'black-primary': '#000000',     /* Pure Black */
+                'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
+                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-hover': '#AE933B',        /* Darker Gold for hover state */
+              },
+              fontFamily: {
+                'sans': ['Roboto', 'sans-serif'],
+                'display': ['Oswald', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Dark Overlay for Hero Text Readability */
+        .hero-overlay {
+            /* Using a placeholder image for a professional look */
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('https://placehold.co/1920x600/0D0D0D/FFD700?text=Thank+You') no-repeat center center/cover;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        /* To override Tailwind's default list-style behavior for the navigation */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Custom Button Style for the Form */
+        .submit-btn {
+            background-color: #FFD700;
+            color: #000000;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #AE933B;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+        }
+    </style>
+</head>
+<body class="font-sans bg-black-primary text-white min-h-screen flex flex-col">
+
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
+                <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
+                    <li><a href="index.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Home</a></li>
+                    <li><a href="services.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <li><a href="projects.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <li><a href="gallery.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="careers.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <li><a href="contact.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content: Thank You Message --><main class="bg-black-secondary flex-grow py-20 md:py-32 flex items-center justify-center">
+        <div class="max-w-4xl mx-auto px-4 w-full">
+            <div class="bg-black-primary p-8 md:p-16 rounded-xl shadow-2xl border-4 border-gold-accent/70 text-center">
+                
+                <!-- Success Icon --><svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#FFD700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-6 text-gold-accent">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-8.89"/>
+                    <path d="M22 4 12 14.01l-3-3"/>
+                </svg>
+
+                <h1 class="font-display text-4xl sm:text-5xl text-gold-accent mb-4 leading-tight uppercase font-bold">
+                    Inquiry Sent Successfully!
+                </h1>
+                <p class="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
+                    Thank you for reaching out to Black Gold Construction. Your message has been received, and our team is already reviewing your details.
+                    We aim to respond to all inquiries within **1-2 business days**.
+                </p>
+
+                <a href="index.html" class="submit-btn inline-block text-lg font-display uppercase font-bold py-3 px-8 rounded-lg shadow-xl hover:shadow-gold-accent/50 transition duration-300">
+                    Return to Homepage
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer --><footer class="bg-black-secondary py-12 border-t border-gold-accent mt-auto">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Legal/Copyright Line -->
+            <div class="pt-2 text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        window.onload = () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('hidden');
+                    navMenu.classList.toggle('block');
+                });
+            }
+        };
+    </script>
+</body>
+</html>

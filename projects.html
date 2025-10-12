@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Gold Construction - Projects Portfolio</title>
+    
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+
+    <!-- Social Media Meta Tags --><meta property="og:title" content="Black Gold Construction: Industrial Services Leader in KSA">
+    <meta property="og:description" content="Explore our portfolio of complex Civil, Mechanical, and E&I projects, including key works for ARAMCO.">
+    
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'black-primary': '#000000',     /* Pure Black */
+                'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
+                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-hover': '#AE933B',        /* Darker Gold for hover state */
+                'aramco-highlight': '#292000',  /* Deep background for ARAMCO cards */
+              },
+              fontFamily: {
+                'sans': ['Roboto', 'sans-serif'],
+                'display': ['Oswald', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Dark Overlay for Hero Text Readability */
+        .hero-overlay {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5)), url('images/slider2.jpg') no-repeat center center/cover;
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+
+        /* To override Tailwind's default list-style behavior for the navigation */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for project details */
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Custom styling for ARAMCO prominence */
+        .aramco-card {
+            border: 4px solid #FFD700; /* Gold border */
+            background-color: #292000; /* Dark highlight color */
+            box-shadow: 0 10px 15px -3px rgba(255, 215, 0, 0.3), 0 4px 6px -2px rgba(255, 215, 0, 0.2);
+        }
+        .project-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 15px 25px -5px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Modal Overlay Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            overflow-y: auto; /* Scrollable content */
+        }
+    </style>
+</head>
+<body class="font-sans bg-black-primary text-white min-h-screen">
+
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
+                <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
+                    <li><a href="index.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Home</a></li>
+                    <li><a href="services.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <!-- Active Link --><li><a href="#" class="text-white text-lg font-medium border-b-2 border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <li><a href="gallery.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="careers.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <li><a href="contact.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Projects Hero Section --><section class="hero-overlay text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <h1 class="font-display text-5xl md:text-6xl text-gold-accent mb-4 leading-tight uppercase font-bold">
+                OUR PROJECT PORTFOLIO
+            </h1>
+            <p class="text-xl text-gray-200">
+                A track record of success in complex industrial and infrastructure projects across the Kingdom, partnering with leading clients including ARAMCO.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Projects Grid --><main class="bg-black-secondary py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-12 border-b-4 border-gold-accent pb-3 uppercase text-center">
+                FEATURED INDUSTRIAL PROJECTS
+            </h2>
+
+            <!-- Dynamic Project Cards will be inserted here by JavaScript -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Project cards generated here -->
+            </div>
+            
+            <!-- Specialized Capabilities Section --><section class="mt-20">
+                <h2 class="font-display text-3xl text-gold-accent mb-8 border-b-2 border-gold-accent pb-2 uppercase text-center md:text-left">
+                    SPECIALIZED CAPABILITIES MEETING ARAMCO STANDARDS
+                </h2>
+                <!-- Dynamic Capability Cards will be inserted here by JavaScript -->
+                <div id="capabilities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Capability cards generated here -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Project Gallery Modal (Hidden by Default) -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="max-w-5xl mx-auto my-12 bg-black-primary rounded-xl shadow-2xl overflow-hidden p-6 md:p-8 relative">
+            
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gold-accent hover:text-white transition duration-300 z-10 p-2 rounded-full bg-black-secondary">
+                <!-- X Icon --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Content Grid: Always single column (Gallery on top, Details on bottom) -->
+            <div class="grid grid-cols-1 gap-8">
+                
+                <!-- 1. Gallery Section (Top) -->
+                <div>
+                    <h3 id="modal-project-title" class="text-3xl font-display text-gold-accent mb-4 border-b border-gold-accent pb-2 uppercase font-bold"></h3>
+                    
+                    <!-- Carousel Container -->
+                    <div class="relative bg-black-secondary rounded-lg overflow-hidden shadow-xl aspect-video mb-4">
+                        <img id="modal-gallery-image" src="" alt="Project Image" class="w-full h-full object-cover transition-opacity duration-300">
+                        
+                        <!-- Navigation Buttons -->
+                        <button onclick="changeImage(-1)" id="prev-btn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 hover:bg-black/80 transition duration-300 rounded-r-lg disabled:opacity-30 disabled:cursor-not-allowed">
+                            <!-- Chevron Left --><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button onclick="changeImage(1)" id="next-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 hover:bg-black/80 transition duration-300 rounded-l-lg disabled:opacity-30 disabled:cursor-not-allowed">
+                            <!-- Chevron Right --><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+
+                    <div id="modal-gallery-indicator" class="text-center text-sm text-gray-400"></div>
+
+                    <!-- Project Summary Below Gallery -->
+                    <p id="modal-project-subtitle" class="text-lg text-gold-accent mt-4 mb-4"></p>
+                    <p id="modal-project-status" class="text-xl font-bold text-center uppercase py-2 rounded-lg"></p>
+                </div>
+                
+                <!-- 2. Details Section (Bottom) -->
+                <div class="bg-black-secondary p-6 rounded-lg">
+                    <h4 class="text-2xl font-display text-gold-accent mb-4 uppercase font-bold border-b border-gray-700 pb-2">Project Details</h4>
+                    <div id="modal-project-details" class="space-y-3 text-base text-gray-300">
+                        <!-- Details injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                
+                <!-- Column 1: Logo & Company Description -->
+                <div class="md:col-span-2">
+                    <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
+                        <span>BLACK GOLD CONSTRUCTION</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Social Links -->
+                        <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (Navigation) -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-gold-accent transition duration-300">Home</a></li>
+                        <li><a href="services.html" class="hover:text-gold-accent transition duration-300">Services</a></li>
+                        <li><a href="#" class="hover:text-gold-accent transition duration-300">Projects</a></li>
+                        <li><a href="gallery.html" class="hover:text-gold-accent transition duration-300">Gallery</a></li>
+                        <li><a href="careers.html" class="hover:text-gold-accent transition duration-300">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-gold-accent transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Location -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Contact Details</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <!-- Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <!-- Phone Number --><span><a href="tel:+966509702239" class="hover:text-gold-accent transition duration-300">+966 50 970 2239</a></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal/Copyright Line -->
+            <div class="mt-12 pt-8 border-t border-black-primary text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved. | <a href="#" class="hover:text-gold-accent transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-gold-accent transition duration-300">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // --- Project Data Structure ---
+        const projectsData = [
+            // --- Main Projects ---
+            {
+                id: 1,
+                title: "CONSTRUCTION OF SWCC TANK",
+                subtitle: "Construction of Two Tanks",
+                client: "GSW",
+                type: "Fabrication & Erection",
+                timeline: "2.5 Years", // <-- UPDATED TIMELINE
+                location: "RIYADH",
+                value: "27 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/one.png"
+                ]
+            },{
+                id: 2,
+                title: "BOTTOM REPLACEMENT OF DEMIN WATER TANK (UNITED)",
+                subtitle: "REPLACEMENT OF BOTTOM, SKETCH & ANNULAR PLATES",
+                client: "UNITED",
+                type: "Bottom Replacement",
+                timeline: "8 months",
+                location: "Jubail",
+                value: "3.3 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/two.png"
+                ]
+            },{
+                id: 3,
+                title: "FABRICATION & REPLACEMENT OF PIPING & STR VALVE STATIONS...",
+                subtitle: "31,000 INCH-DIA PIPING & 822 TONNAGE OF STRUCTURAL WORK",
+                client: "ARAMCO",
+                type: "Fabrication & Erection",
+                timeline: "11 Months",
+                location: "Jubail",
+                value: "6.7 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/three-1.png",
+                    "projects/three-2.png",
+                    "projects/three-3.png",
+                    "projects/three-4.png",
+                ]
+            },
+            {
+                id: 4,
+                title: "FABRICATION/INSTALLATION OF RTR LINE",
+                subtitle: "6.7 KM GRE PIPELINE",
+                client: "GAS ARABIA",
+                type: "Fabrication & Installation",
+                timeline: "09 Months",
+                location: "Jubail",
+                value: "7.4 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/four.png",
+                ]
+            },
+            {
+                id: 5,
+                title: "CONSTRUCTION OF 42” DOWN STREAM PIPELINE",
+                subtitle: "16 KM PIPELINE JUBAIL AREA",
+                client: "NBC/DENYS",
+                type: "Fabrication & Installation",
+                timeline: "13 Months",
+                location: "Jubail",
+                value: "37 Million SAR",
+                status: "ONGOING PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/five.png",
+                ]
+            },
+            {
+                id: 6,
+                title: "FABRICAITON & REPLACEMENT OF PP DISCHARGE VESSEL & STR",
+                subtitle: "Replacement of Vessel",
+                client: "TASNEE",
+                type: "Replacement of Vessel",
+                timeline: "07 months",
+                location: "Jubail",
+                value: "2.9 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/six-1.png",
+                    "projects/six-2.png",
+                    "projects/six-3.png",
+                    "projects/six-4.png",
+
+                ]
+            },
+            {
+                id: 7,
+                title: "REPLACEMENT OF HEAT EXCHANGERS",
+                subtitle: "Shutdown Work",
+                client: "SHARQ",
+                type: "Replacement of Vessel",
+                timeline: "3 months",
+                location: "Jubail",
+                value: "1.6 Million SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/seven.png",
+                ]
+            },
+            {
+                id: 8,
+                title: "EXCHANGER SHELL REPAIR WORK & TCF DEVELOPMENT",
+                subtitle: "Development of Technical Construction Facility (TCF)",
+                client: "ARAMCO",
+                type: "TCF Development & Repair",
+                timeline: "09 MONTHS",
+                location: "JUBAIL",
+                value: "2.9 MILLION SAR",
+                status: "COMPLETED PROJECT",
+                isAramco: false,
+                category: "Project",
+                images: [
+                    "projects/eight.png",
+                ]
+            },
+            // --- Specialized Capabilities (New) ---
+            {
+                id: 9,
+                title: "PRE-CASTING OF FOUNDATIONS",
+                subtitle: "Ensuring structural integrity with ARAMCO standards.",
+                client: "ARAMCO",
+                type: "Civil Works Capability",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/nine-1.png",
+                    "projects/nine-2.png",
+                    "projects/nine-3.png",
+                    "projects/nine-4.png",
+                ]
+            },
+            {
+                id: 10,
+                title: "CASTING OF STRUCTURAL COLUMNS",
+                subtitle: "Advanced techniques for industrial support structures.",
+                client: "ARAMCO",
+                type: "Civil Works Capability",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/ten.png",
+                ]
+            },
+            {
+                id: 11,
+                title: "TCF DEVELOPMENT",
+                subtitle: "Technical Construction Facility setup as per ARAMCO guidelines.",
+                client: "ARAMCO",
+                type: "Facility Development",
+                timeline: "N/A",
+                location: "Various Sites",
+                value: "N/A",
+                status: "STANDARD CAPABILITY",
+                isAramco: false,
+                category: "Capability",
+                images: [
+                    "projects/eleven-1.png",
+                    "projects/eleven-2.png",
+                ]
+            }
+        ];
+
+        // --- Gallery/Modal Logic Variables ---
+        let currentProject;
+        let currentImageIndex = 0;
+
+        // --- Helper Function to create a detail row ---
+        function createDetailItem(label, value, isGold = false) {
+            return `
+                <div class="detail-item ${isGold ? 'text-gold-accent' : ''}">
+                    <span class="${isGold ? 'font-bold' : 'font-medium'}">${label}</span>
+                    <span>${value}</span>
+                </div>
+            `;
+        }
+        
+        // --- Core Functions for Modal/Gallery ---
+        
+        function openModal(projectId) {
+            currentProject = projectsData.find(p => p.id === projectId);
+            if (!currentProject) return;
+
+            // 1. Set Modal Title/Subtitle/Status
+            document.getElementById('modal-project-title').textContent = currentProject.title;
+            document.getElementById('modal-project-subtitle').textContent = currentProject.subtitle;
+            
+            const statusElement = document.getElementById('modal-project-status');
+            // Remove status text for capability items
+            statusElement.textContent = currentProject.category === 'Capability' ? '' : currentProject.status;
+            statusElement.className = 'text-xl font-bold text-center uppercase py-2 rounded-lg';
+            
+            // Status coloring logic
+            if (currentProject.category !== 'Capability') {
+                if (currentProject.status === "ONGOING PROJECT") {
+                    statusElement.classList.add('bg-red-900/50', 'text-red-400');
+                } else if (currentProject.status === "COMPLETED PROJECT") {
+                    statusElement.classList.add('bg-green-900/50', 'text-green-400');
+                }
+            }
+
+
+            // 2. Set Modal Details - Conditionally filter out Client, Location, and Value if N/A / Capability
+            let details = [
+                // Only show CLIENT if it's a Project, not a Capability
+                currentProject.category !== 'Capability' ? createDetailItem('CLIENT', currentProject.client, true) : '', 
+                createDetailItem('PROJECT TYPE', currentProject.type),
+                // Only show Timeline/Value if not N/A (Applies to both)
+                currentProject.timeline !== "N/A" ? createDetailItem('TIMELINE', currentProject.timeline) : '',
+                 // Only show LOCATION if it's a Project, not a Capability
+                currentProject.category !== 'Capability' ? createDetailItem('LOCATION', currentProject.location) : '', 
+                currentProject.value !== "N/A" ? createDetailItem('VALUE', currentProject.value, true) : '',
+                createDetailItem('GALLERY SIZE', `${currentProject.images.length} ${currentProject.images.length > 1 ? "Photos" : "Photo"}`, false)
+            ];
+
+            const detailsHtml = details.filter(Boolean).join('');
+            document.getElementById('modal-project-details').innerHTML = detailsHtml;
+
+            // 3. Initialize Carousel
+            currentImageIndex = 0;
+            updateCarousel();
+            
+            // 4. Show Modal
+            document.getElementById('project-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            document.getElementById('project-modal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        function updateCarousel() {
+            const imageElement = document.getElementById('modal-gallery-image');
+            const indicatorElement = document.getElementById('modal-gallery-indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (currentProject.images && currentProject.images.length > 0) {
+                const totalImages = currentProject.images.length;
+                
+                // Update Image Source
+                imageElement.src = currentProject.images[currentImageIndex];
+                
+                // Update Indicator Text
+                indicatorElement.textContent = `Image ${currentImageIndex + 1} of ${totalImages}`;
+
+                // Update Button States
+                prevBtn.disabled = currentImageIndex === 0;
+                nextBtn.disabled = currentImageIndex === totalImages - 1;
+
+                // Hide buttons if only one image
+                prevBtn.style.display = totalImages > 1 ? 'block' : 'none';
+                nextBtn.style.display = totalImages > 1 ? 'block' : 'none';
+
+            } else {
+                // Fallback if no images are defined
+                imageElement.src = "https://placehold.co/800x600/808080/FFFFFF?text=No+Images";
+                indicatorElement.textContent = "No gallery images available.";
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
+            }
+        }
+
+        function changeImage(direction) {
+            const newIndex = currentImageIndex + direction;
+            if (newIndex >= 0 && newIndex < currentProject.images.length) {
+                currentImageIndex = newIndex;
+                updateCarousel();
+            }
+        }
+
+        // --- Dynamic Card Generation ---
+        function renderProjectCards() {
+            const projectsGrid = document.getElementById('projects-grid');
+            const capabilitiesGrid = document.getElementById('capabilities-grid');
+            
+            projectsGrid.innerHTML = ''; // Clear existing content
+            capabilitiesGrid.innerHTML = ''; 
+
+            projectsData.forEach(project => {
+                const targetGrid = project.category === 'Capability' ? capabilitiesGrid : projectsGrid;
+                
+                if (!targetGrid) return; 
+
+                const cardClass = project.isAramco ? 'aramco-card' : 'bg-black-primary border-t-4 border-gold-accent';
+                
+                let statusColor;
+                let tagText;
+                let tagBg;
+                
+                if (project.category === 'Capability') {
+                    // Special styling for Capability cards
+                    statusColor = 'text-gold-accent'; 
+                    tagText = 'ARAMCO STANDARD';
+                    tagBg = 'bg-gold-accent text-black-primary';
+                } else {
+                    // Standard styling for Project cards
+                    statusColor = project.status === 'ONGOING PROJECT' ? 'text-red-400' : 'text-green-400';
+                    tagText = project.isAramco ? 'ARAMCO PROJECT' : project.type.toUpperCase();
+                    tagBg = project.isAramco ? 'bg-gold-accent text-black-primary' : 'bg-gray-700 text-white';
+                }
+                
+                // Conditionally build the details section for the main card display
+                let detailsHtml = [
+                    // Only include CLIENT, LOCATION, and VALUE if it's a 'Project' or if the field is not N/A
+                    project.category !== 'Capability' ? createDetailItem('CLIENT', project.client, project.isAramco) : '',
+                    createDetailItem('PROJECT TYPE', project.type),
+                    project.timeline !== "N/A" ? createDetailItem('TIMELINE', project.timeline) : '',
+                    project.category !== 'Capability' ? createDetailItem('LOCATION', project.location) : '',
+                    project.value !== "N/A" ? createDetailItem('VALUE', project.value, project.isAramco) : '',
+                ].filter(Boolean).join(''); 
+
+                // Conditionally remove the 'STANDARD CAPABILITY' status section
+                const statusSection = project.category === 'Capability' ? '' : `
+                    <div class="mt-4 pt-4 border-t border-gray-700 text-center">
+                        <span class="text-lg font-bold ${statusColor} uppercase">${project.status}</span>
+                    </div>
+                `;
+
+
+                const cardHtml = `
+                    <div onclick="openModal(${project.id})" class="project-card rounded-xl overflow-hidden shadow-2xl transition-all duration-300 cursor-pointer ${cardClass}">
+                        <div class="p-6">
+                            <span class="inline-block font-bold px-4 py-1 text-xs rounded-full mb-3 uppercase tracking-widest ${tagBg}">${tagText}</span>
+                            <h3 class="text-xl font-display text-white mb-2 font-bold uppercase">
+                                ${project.title}
+                            </h3>
+                            <p class="text-gold-accent mb-6 font-medium">${project.subtitle}</p>
+
+                            <div class="space-y-2 text-sm text-gray-300">
+                                ${detailsHtml}
+                            </div>
+                            ${statusSection}
+                            <button class="mt-4 w-full bg-gold-accent text-black-primary font-bold py-2 rounded-lg hover:bg-gold-hover transition duration-300">
+                                View Gallery (${project.images.length}  ${project.images.length > 1 ? "Photos" : "Photo"})
+                            </button>
+                        </div>
+                    </div>
+                `;
+                targetGrid.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        }
+
+
+        // --- Event Listeners ---
+        window.onload = () => {
+            // Render the cards when the page loads
+            renderProjectCards();
+            
+            // Mobile Menu Toggle Logic
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('hidden');
+                    navMenu.classList.toggle('block');
+                });
+            }
+
+            // Close modal on escape key press
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && document.getElementById('project-modal').style.display === 'block') {
+                    closeModal();
+                }
+            });
+        };
+    </script>
+</body>
+</html>

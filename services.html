@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Gold Construction - Services</title>
+    
+    <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
+
+    <!-- Social Media Meta Tags (Open Graph for Facebook/LinkedIn/General) --><meta property="og:title" content="Black Gold Construction: Industrial Services Leader in KSA">
+    <meta property="og:description" content="Specializing in Civil, Mechanical, and Electrical & Instrumentation disciplines across the Kingdom of Saudi Arabia. Dynamic solutions for complex industrial projects.">
+    <meta property="og:image" content="construction.jpg">
+    <meta property="og:url" content="[Your Website URL Here]">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags --><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Black Gold Construction">
+    <meta name="twitter:description" content="Driving success through expertise in industrial construction and engineering services in the KSA.">
+    <meta name="twitter:image" content="construction.jpg">
+    
+    <!-- Load Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Tailwind Configuration --><script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                'black-primary': '#000000',     /* Pure Black */
+                'black-secondary': '#0D0D0D',   /* Very Deep Grey/Black for contrast sections */
+                'gold-accent': '#FFD700',       /* Deeper, more classic Gold */
+                'gold-hover': '#AE933B',        /* Darker Gold for hover state */
+              },
+              fontFamily: {
+                'sans': ['Roboto', 'sans-serif'],
+                'display': ['Oswald', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    
+    <!-- Load Custom Fonts --><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* New CSS for Carousel Container */
+        .hero-carousel-container {
+            position: relative;
+            overflow: hidden;
+            /* Matches previous section padding */
+            padding-top: 6rem; 
+            padding-bottom: 6rem; 
+        }
+        @media (min-width: 768px) {
+            .hero-carousel-container {
+                padding-top: 9rem; 
+                padding-bottom: 9rem; 
+            }
+        }
+
+        /* Carousel Slide Styling (Absolute position, cover size, transition) */
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out; /* Smooth transition for cross-fade effect */
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        /* Dark Overlay for Text Readability */
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0,0,0,0.7); /* Dark overlay */
+            z-index: 10;
+        }
+
+        /* To override Tailwind's default list-style behavior for the navigation */
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Styling for the accordion summaries */
+        details summary {
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2); /* Gold border */
+            transition: background-color 0.3s ease;
+            font-weight: 700;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.25rem; /* text-xl */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details summary:hover {
+            background-color: #0D0D0D; /* black-secondary */
+        }
+        details[open] summary {
+            background-color: #000000; /* black-primary */
+            color: #FFD700; /* gold-accent */
+        }
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        /* Chevron icon for accordion */
+        details summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #FFD700;
+            transition: transform 0.3s;
+        }
+        details[open] summary::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+    </style>
+</head>
+<body class="font-sans bg-black-primary text-white min-h-screen">
+
+    <!-- Header & Navigation --><header class="bg-black-primary py-5 border-b border-gold-accent sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Top Bar: Logo and Mobile Menu Button --><div class="flex justify-between items-center">
+                <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0">
+                    <span>BLACK GOLD CONSTRUCTION</span>
+                </a>
+                
+                <!-- Mobile Menu Toggle Button --><button id="menu-toggle" class="md:hidden text-gold-accent hover:text-white transition duration-300 p-2 rounded-lg">
+                    <!-- Hamburger Icon (Simple SVG) --><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+            
+            <!-- Navigation Links (Collapsible) --><nav id="nav-menu" class="hidden md:block w-full">
+                <ul class="nav-list flex flex-col space-y-3 md:flex-row md:space-x-8 md:space-y-0 mt-5 md:mt-0 md:justify-end">
+                    <li><a href="index.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Home</a></li>
+                    <!-- Active Link --><li><a href="#" class="text-white text-lg font-medium hover:text-gold-accent border-b-2 border-gold-accent pb-1 transition duration-300">Services</a></li>
+                    <li><a href="projects.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Projects</a></li>
+                    <li><a href="gallery.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Gallery</a></li>
+                    <li><a href="careers.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Careers</a></li>
+                    <li><a href="contact.html" class="text-white text-lg font-medium hover:text-gold-accent hover:border-b-2 hover:border-gold-accent pb-1 transition duration-300">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Services Hero Section Updated to Carousel --><section class="hero-carousel-container text-center py-24 md:py-36 relative">
+        <!-- Carousel Slides (Stock Image Placeholders) -->
+        <div id="slide-1" class="carousel-slide active" style="background-image: url('images/slider1.jpg');"></div>
+        <div id="slide-2" class="carousel-slide" style="background-image: url('images/slider2.jpg');"></div>
+        <div id="slide-3" class="carousel-slide" style="background-image: url('images/slider3.jpg');"></div>
+        <div id="slide-4" class="carousel-slide" style="background-image: url('images/slider4.jpg');"></div>
+        <div id="slide-5" class="carousel-slide" style="background-image: url('images/slider5.jpg');"></div>
+        <div id="slide-6" class="carousel-slide" style="background-image: url('images/slider6.jpg');"></div>
+
+        <!-- Dark Overlay -->
+        <div class="carousel-overlay"></div>
+
+        <div class="relative z-20 max-w-4xl mx-auto px-4">
+            <h1 class="font-display text-5xl md:text-6xl text-gold-accent mb-4 leading-tight uppercase font-bold">
+                COMPREHENSIVE INDUSTRIAL SERVICES
+            </h1>
+            <p class="text-xl text-gray-200">
+                Integrated Civil, Mechanical, and Electrical & Instrumentation Solutions Built on Expertise, Quality, and Rigorous Compliance Standards Across the KSA.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Services Accordion Section --><main class="bg-black-primary py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <h2 class="font-display text-4xl text-gold-accent mb-10 border-b-4 border-gold-accent pb-3 uppercase text-center md:text-left">
+                OUR CORE DISCIPLINES
+            </h2>
+
+            <!-- MECHANICAL SERVICES --><section id="mechanical-services" class="mb-12 bg-black-secondary rounded-xl overflow-hidden shadow-2xl">
+                <!-- Image Placeholder for Mechanical Services -->
+                <div class="overflow-hidden h-64 border-b-4 border-gold-accent">
+                    <img src="images/pipes2.png" 
+                         alt="Industrial piping and welding operations" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <details open class="group">
+                    <summary class="text-gold-accent bg-black-secondary hover:bg-black-primary transition duration-300 p-6">
+                        MECHANICAL SERVICES & SHUTDOWN EXPERTISE
+                    </summary>
+                    <div class="p-6 space-y-8 bg-black-primary text-gray-300 border-l-4 border-gold-accent">
+                        <p class="text-lg">Black Gold provides expert shutdown, maintenance, and fabrication services, ensuring safety, quality, and compliance in all industrial solutions.</p>
+                        
+                        <h3 class="text-2xl font-display text-white mb-4 border-b border-gray-700 pb-2 uppercase">INDUSTRIAL MAINTENANCE & SHUTDOWN</h3>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4 list-disc list-inside ml-4">
+                            <li>Pressure Vessel Repair/Modification (Internals & Nozzles)</li>
+                            <li>Storage Tank Repair/Modification (API 653)</li>
+                            <li>Heat Exchanger Maintenance & Repair</li>
+                            <li>Air Cooler Cleaning, Nozzle Replacement & Tube Repairs</li>
+                            <li>Columns Tray Support Ring & Floor Replacement, Modifications</li>
+                            <li>Pipeline Construction, Repair & Modification</li>
+                            <li>Flare & Stack Maintenance and Repairs</li>
+                        </ul>
+
+                        <h3 class="text-2xl font-display text-white mb-4 border-b border-gray-700 pb-2 uppercase">FABRICATION & ERECTION</h3>
+                        <p class="text-base">We offer comprehensive industrial fabrication and erection works for various construction needs, including pipelines, and process piping (metallic/non-metallic). Our expertise allows us to deliver high-quality, innovative, and tailored solutions.</p>
+                        
+                        <h3 class="text-2xl font-display text-white mb-4 border-b border-gray-700 pb-2 uppercase">TANK DIVISION (API 650 & 620)</h3>
+                        <p class="text-base">Specializing in atmospheric storage solutions for the Oil & Gas, Power, and Water industries, our engineering team ensures optimum design based on international codes (API, ASME, AWWA, UL) for lasting performance and structural integrity.</p>
+                        <h4 class="text-xl text-gold-accent font-medium mt-4 uppercase">Storage Tank Types:</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>Cone Roof (Self-supported or Column Supported)</li>
+                            <li>Dome Roof</li>
+                            <li>Floating Roof (Internal & External Pontoon type)</li>
+                        </ul>
+                    </div>
+                </details>
+            </section>
+
+            <!-- CIVIL SERVICES --><section id="civil-services" class="mb-12 bg-black-secondary rounded-xl overflow-hidden shadow-2xl">
+                <!-- Image Placeholder for Civil Services -->
+                <div class="overflow-hidden h-64 border-b-4 border-gold-accent">
+                    <img src="images/slider5.jpg" 
+                         alt="Heavy civil engineering and foundation works" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <details class="group">
+                    <summary class="text-gold-accent bg-black-secondary hover:bg-black-primary transition duration-300 p-6">
+                        CIVIL SERVICES & SPECIALIZED CONSTRUCTION
+                    </summary>
+                    <div class="p-6 space-y-8 bg-black-primary text-gray-300 border-l-4 border-gold-accent">
+                        
+                        <h3 class="text-2xl font-display text-white mb-4 border-b border-gray-700 pb-2 uppercase">GENERAL CIVIL & INFRASTRUCTURE</h3>
+                        <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 list-disc list-inside ml-4">
+                            <li>Land Surveying (Specialized Expertise)</li>
+                            <li>Oil & Gas Pipeline Construction</li>
+                            <li>Pre-Casting of Foundations Works</li>
+                            <li>All types of Earth Works & Concrete Works</li>
+                            <li>Painting, Scaffolding, and Carpentry Works</li>
+                            <li>Complete TCF Development (ARAMCO STD)</li>
+                            <li>Fencing, Swimming Pool, and Landscaping Works</li>
+                        </ul>
+
+                        <!-- Concrete & Foundation Services --><details class="bg-black-secondary rounded-lg my-4">
+                            <summary class="text-white text-lg font-medium bg-black-secondary hover:bg-[#1a1a1a] p-4 uppercase">PILING & FOUNDATION WORKS</summary>
+                            <div class="p-4 space-y-4">
+                                <p class="text-sm">BG Piling offers a full-service solution, installing all piling types necessary for ground conditions throughout KSA, including solutions for restricted access sites.</p>
+                                <h4 class="text-gold-accent font-medium uppercase">Piling Types:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Mini Piling, CFA Piling, Open Bored Piling</li>
+                                    <li>Contiguous Bored Piles, Secant Bored Piles, King Posts</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <!-- Concrete Repair & Strengthening --><details class="bg-black-secondary rounded-lg my-4">
+                            <summary class="text-white text-lg font-medium bg-black-secondary hover:bg-[#1a1a1a] p-4 uppercase">Concrete Repair, Strengthening & Waterproofing</summary>
+                            <div class="p-4 space-y-4">
+                                <p class="text-sm">Recognized as a leading concrete repair contractor, BG utilizes state-of-the-art equipment and injection resins to ensure full depth penetration for fully rehabilitated structures.</p>
+                                <h4 class="text-gold-accent font-medium uppercase">Structural Strengthening Techniques:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>CFRP Plate Bonding (Carbon Fibre Reinforced Polymer)</li>
+                                    <li>Carbon Fibre Wrapping, Aramid/Kevlar Fibre Wrapping</li>
+                                    <li>Traditional Steel Reinforcement, Steel Plate Bonding</li>
+                                </ul>
+                                <h4 class="text-gold-accent font-medium mt-2 uppercase">Reasons for Strengthening:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Retrofit for Seismic/Blast Loading, Reinforcement Due to Corrosion Section Loss</li>
+                                    <li>Structural Modification (Vertical/Horizontal Extension), Change of Use</li>
+                                </ul>
+                                <h4 class="text-gold-accent font-medium mt-2 uppercase">Waterproofing Types:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Fully Bonded System, Liquid Applied, Torch Applied System, Polyurea Waterproofing</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <!-- Coating & Flooring Services --><details class="bg-black-secondary rounded-lg my-4">
+                            <summary class="text-white text-lg font-medium bg-black-secondary hover:bg-[#1a1a1a] p-4 uppercase">Specialized Coatings, Lining & Flooring</summary>
+                            <div class="p-4 space-y-4">
+                                <h4 class="text-gold-accent font-medium uppercase">INDUSTRIAL EPOXY COATING & SELF-LEVELING:</h4>
+                                <p class="text-sm mb-2">Creating durable, protective layers for garages, parking floors, and industrial sectors (manufacturing, hospitals, warehouses).</p>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Epoxy-Coating, Self-Levelling, Polyurethane Flooring, Concrete Floor Repairing.</li>
+                                </ul>
+
+                                <h4 class="text-gold-accent font-medium mt-4 uppercase">TANK LINING & COATING:</h4>
+                                <p class="text-sm mb-2">Vast experience in repairing leaking tanks and tank lining/re-lining using GRP, EPOXY, Polyurethane, or Polyuria to prevent leakage and extend life.</p>
+                            </div>
+                        </details>
+                        
+                    </div>
+                </details>
+            </section>
+
+            <!-- E&I SERVICES --><section id="e-i-services" class="bg-black-secondary rounded-xl overflow-hidden shadow-2xl">
+                <!-- Image Placeholder for E&I Services -->
+                <div class="overflow-hidden h-64 border-b-4 border-gold-accent">
+                    <img src="images/electric.jpg" 
+                         alt="Electrical control panels and complex instrumentation" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <details class="group">
+                    <summary class="text-gold-accent bg-black-secondary hover:bg-black-primary transition duration-300 p-6">
+                        ELECTRICAL & INSTRUMENTATION (E&I)
+                    </summary>
+                    <div class="p-6 space-y-8 bg-black-primary text-gray-300 border-l-4 border-gold-accent">
+                        <p class="text-lg">Black Gold has a proven track record of successfully completing the electrical and instrumentation portions of complex industrial, commercial, and oil & gas facilities.</p>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            
+                            <!-- E&I Capabilities --><div class="p-4 border-l-2 border-gold-accent bg-black-secondary rounded-lg">
+                                <h3 class="text-2xl font-display text-white mb-4 uppercase">CORE CAPABILITIES</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li>Installation & Maintenance</li>
+                                    <li>Project Management & Value Added Services</li>
+                                    <li>Medium & Low Voltage Systems</li>
+                                    <li>3D CAD Drawings & Pre-Project Planning</li>
+                                    <li>Procurement & Utility Service Coordination</li>
+                                    <li>Electrical Audits & Quality/Safety Assurance</li>
+                                </ul>
+                            </div>
+
+                            <!-- Power Services --><div class="p-4 border-l-2 border-gold-accent bg-black-secondary rounded-lg">
+                                <h3 class="text-2xl font-display text-white mb-4 uppercase">POWER SERVICES</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li>Main Switchgear Installations & Bus Duct/Riser Feeders</li>
+                                    <li>Power & Control Wiring for Processing Equipment</li>
+                                    <li>Generator System & UPS Installation</li>
+                                    <li>Cable Section Replacement for Faulty Circuits</li>
+                                    <li>New Construction, Terminations & Emergency Restoration</li>
+                                    <li>Preventive Power Maintenance Programs</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Instrumentation Services --><div class="p-4 border-l-2 border-gold-accent bg-black-secondary rounded-lg">
+                                <h3 class="text-2xl font-display text-white mb-4 uppercase">INSTRUMENTATION SERVICES</h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li>Installation of SCADA/PLC/DCS Systems</li>
+                                    <li>Installation of Remote Instrument Enclosures & Analyzers in Shelters</li>
+                                    <li>Fire Alarm & Fire Control Systems</li>
+                                    <li>Telecommunication, CCTV & Access Control Systems</li>
+                                    <li>Process Loop Testing and Field Instrument Testing & Inspection</li>
+                                    <li>Supply & Installation of All Types of Control Valves and Instruments</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-2xl font-display text-white mt-8 border-b border-gray-700 pb-2 uppercase">LIGHTING SOLUTIONS (DESIGN TO MAINTENANCE)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                            <div>
+                                <h4 class="text-xl text-gold-accent font-medium mb-2 uppercase">Industrial & Warehouse:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Hi-Bay LED Warehouse Lighting (New & Retrofit)</li>
+                                    <li>Oil & Gas Listed Lighting (XP, Oil, & Dust Tight)</li>
+                                    <li>Food & Beverage Industry Lighting (GMP Compliant)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl text-gold-accent font-medium mb-2 uppercase">Commercial / Office:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Fluorescent and New LED Lighting Solutions</li>
+                                    <li>Dimming & Lighting Control Systems</li>
+                                    <li>Interior Architectural Lighting & Atmosphere Lighting</li>
+                                    
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl text-gold-accent font-medium mb-2 uppercase">Exterior Lighting:</h4>
+                                <ul class="list-disc list-inside ml-4 text-sm">
+                                    <li>Parking Lot / Pole Lighting (Maintenance, Repair, Installation)</li>
+                                    <li>Municipal Street Lighting & Parking Garage Lighting</li>
+                                    <li>Sports Lighting & Underground Cable Repair</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
+                
+                <!-- Column 1: Logo & Company Description -->
+                <div class="md:col-span-2">
+                    <a href="index.html" class="inline-flex items-center space-x-2 text-3xl text-gold-accent font-extrabold tracking-widest font-display p-0 mb-4">
+                        <span>BLACK GOLD CONSTRUCTION</span>
+                    </a>
+                    <p class="text-sm text-gray-400 mb-6">
+                        Leading provider of industrial services specializing in Civil, Mechanical, and E&I solutions across the Kingdom of Saudi Arabia.
+                    </p>
+                    <div class="space-x-4">
+                        <!-- Social Links -->
+                        <a href="#" aria-label="LinkedIn" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="Twitter" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Facebook" class="text-gold-accent text-2xl hover:text-gold-hover transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Column 2: Quick Links (Navigation) -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-gold-accent transition duration-300">Home</a></li>
+                        <li><a href="#" class="hover:text-gold-accent transition duration-300">Services</a></li>
+                        <li><a href="projects.html" class="hover:text-gold-accent transition duration-300">Projects</a></li>
+                        <li><a href="gallery.html" class="hover:text-gold-accent transition duration-300">Gallery</a></li>
+                        <li><a href="careers.html" class="hover:text-gold-accent transition duration-300">Careers</a></li>
+                        <li><a href="contact.html" class="hover:text-gold-accent transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact & Location -->
+                <div>
+                    <h4 class="text-xl font-display text-gold-accent mb-4 uppercase font-bold">Contact Details</h4>
+                    <ul class="space-y-4 text-gray-400 text-sm">
+                        <li class="flex items-start space-x-3">
+                            <!-- Location Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent mt-0.5 flex-shrink-0"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <!-- Updated Location and Map Link --><a href="https://maps.google.com/?q=26.986744,49.655514" target="_blank" rel="noopener noreferrer" class="flex-1 hover:text-gold-accent transition duration-300">Taibha center near by Masjib bin baz, Al Jubail 35513, Saudi Arabia</a>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Phone Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <!-- Updated Phone Number --><span><a href="tel:+966509702239" class="hover:text-gold-accent transition duration-300">+966 50 970 2239</a></span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
+                            <span><a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal/Copyright Line -->
+            <div class="mt-12 pt-8 border-t border-black-primary text-center text-gray-500 text-sm">
+                <p>&copy; 2025 BLACK GOLD CONSTRUCTION Company. All rights reserved. | <a href="#" class="hover:text-gold-accent transition duration-300">Privacy Policy</a> | <a href="#" class="hover:text-gold-accent transition duration-300">Terms of Use</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => {
+                // Toggles the hidden/block classes on the navigation container
+                navMenu.classList.toggle('hidden');
+                navMenu.classList.toggle('block');
+            });
+        }
+
+        // Carousel Logic
+        const slides = document.querySelectorAll('.carousel-slide');
+        let currentSlide = 0;
+        const slideInterval = 5000; // 5 seconds transition delay
+
+        function nextSlide() {
+            // Remove active class from current slide
+            slides[currentSlide].classList.remove('active');
+            
+            // Advance to the next slide (loop back to 0)
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Add active class to the new current slide
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Start the automatic rotation
+        setInterval(nextSlide, slideInterval);
+    </script>
+</body>
+</html>
