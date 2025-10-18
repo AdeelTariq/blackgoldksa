@@ -173,6 +173,17 @@
             <p class="text-xl text-gray-200">
                 Integrated Civil, Mechanical, and Electrical & Instrumentation Solutions Built on Expertise, Quality, and Rigorous Compliance Standards Across the KSA.
             </p>
+            <div class="mt-6 space-x-2 space-y-2">
+                <a href="#mechanical-services" onclick="toggleDetails('mechanical-services')" class="inline-block border-2 border-gold-accent text-white py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
+                    MECHANICAL SERVICES
+                </a>
+                 <a href="#civil-services" onclick="toggleDetails('civil-services')" class="inline-block border-2 border-gold-accent text-white py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
+                    CIVIL SERVICES
+                </a>
+                 <a href="#e-i-services" onclick="toggleDetails('e-i-services')" class="inline-block border-2 border-gold-accent text-white py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
+                    ELECTRICAL SERVICES
+                </a>
+            </div>
         </div>
     </section>
 
@@ -483,6 +494,12 @@ Zip code 35514, Jubail Eastern Region KSA</a>
 
         // Start the automatic rotation
         setInterval(nextSlide, slideInterval);
+
+        function toggleDetails(parentId) {
+            const parent = document.getElementById(parentId);
+            const details = parent.querySelector('details');
+            details.open = true;
+        }
     </script>
 </body>
 </html>
