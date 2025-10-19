@@ -74,6 +74,45 @@
         .gallery-item:hover .gallery-caption {
             transform: translateY(0);
         }
+
+        /* New styles for horizontal scroller */
+        .scroller-container {
+            position: relative;
+        }
+
+        .horizontal-scroller {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-left: calc((100vw - 1280px) / 2 + 1rem); /* Align with max-w-7xl container */
+            padding-bottom: 1rem; /* Space for content below if needed, and to avoid cutting shadows */
+            /* Hide scrollbar for a cleaner look */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .horizontal-scroller::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari, and Opera */
+        }
+
+        .scroller-item {
+            flex: 0 0 auto; /* Prevent items from shrinking */
+            width: 22%; /* 5 items on large screens */
+            padding: 0 0.5rem;
+        }
+        @media (max-width: 1024px) {
+            .scroller-item { width: 25%; } /* Adjust for tablets (4 items) */
+        }
+        @media (max-width: 1280px) { /* When viewport is smaller than max-w-7xl */
+            .horizontal-scroller {
+                padding-left: 1rem; /* Corresponds to px-4 */
+                padding-right: 1rem; /* Add padding to the right on smaller screens */
+            }
+        }
+        @media (max-width: 768px) {
+            .scroller-item { width: 33.33%; } /* Adjust for mobile (3 items) */
+        }
+
         
         /* Lightbox Overlay Styles */
         .lightbox-overlay {
@@ -90,7 +129,7 @@
         }
     </style>
 </head>
-<body class="font-sans bg-black-primary text-white min-h-screen">
+<body class="font-sans bg-black-primary text-white min-h-screen overflow-x-hidden">
 
     <!-- Header & Navigation --><header class="bg-header border-b border-gold-accent sticky top-0 z-50">
         <div class="pt-5">
@@ -132,12 +171,9 @@
 
     <!-- Main Gallery Grid -->
     <main class="bg-black-secondary py-20">
-        <div class="max-w-7xl mx-auto px-4">
-            
-            <!-- Container for dynamic headings and image grids -->
-            <div id="gallery-container" class="w-full">
-                <!-- Headings and image grids will be generated here by JS -->
-            </div>
+        <!-- Container for dynamic headings and image grids -->
+        <div id="gallery-container" class="w-full">
+            <!-- Headings and image grids will be generated here by JS -->
         </div>
     </main>
 
@@ -248,11 +284,10 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 id: -10,
                 title: "Office Interior",
                 images: [
+                    "projects/office14.jpeg",    
+                    "projects/office15.jpeg",
                     "projects/office12.jpeg",
                     "projects/office13.jpeg",
-                    "projects/office14.jpeg",
-                    "projects/office-2.png",
-                    "projects/office15.jpeg",
                 ]
             },
             {
@@ -353,6 +388,49 @@ Zip code 35514, Jubail Eastern Region KSA</a>
         let flattenedGallery = []; // Used to store ALL images for lightbox navigation
         let currentImageIndex = 0;
 
+        /**
+         * Scrolls a given carousel container horizontally.
+         * @param {string} containerId - The ID of the .horizontal-scroller element.
+         * @param {number} direction - -1 for left, 1 for right.
+         */
+        function scrollCarousel(containerId, direction) {
+            const container = document.getElementById(containerId);
+            if (container) {
+                // Scroll by 75% of the container's visible width
+                const scrollAmount = container.clientWidth * 0.75 * direction;
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+
+                // After scrolling, wait a moment for the scroll to finish and then update the buttons.
+                setTimeout(() => {
+                    updateScrollButtons(container);
+                }, 500); // 500ms delay to allow smooth scroll to complete
+            }
+        }
+
+        /**
+         * Updates the visibility of scroll buttons based on the scroller's position.
+         * @param {HTMLElement} scroller - The .horizontal-scroller element.
+         */
+        function updateScrollButtons(scroller) {
+            const parentContainer = scroller.parentElement;
+            if (!parentContainer) return;
+
+            const prevButton = parentContainer.querySelector('.carousel-prev-btn');
+            const nextButton = parentContainer.querySelector('.carousel-next-btn');
+
+            if (!prevButton || !nextButton) return;
+
+            const scrollLeft = scroller.scrollLeft;
+            const scrollWidth = scroller.scrollWidth;
+            const clientWidth = scroller.clientWidth;
+
+            // Hide prev button if at the beginning
+            prevButton.disabled = scrollLeft < 1;
+
+            // Hide next button if at the end (with a 1px tolerance)
+            nextButton.disabled = scrollWidth - scrollLeft - clientWidth < 1;
+        }
+
         // --- Core Functions ---
 
         /**
@@ -367,9 +445,15 @@ Zip code 35514, Jubail Eastern Region KSA</a>
             let htmlContent = '';
             let lastSection = null;
             
+            // Pre-calculate image counts for each section to determine if buttons are needed
+            const officeImagesCount = projectsData[0] ? projectsData[0].images.length : 0;
+            const workshopImagesCount = projectsData[1] ? projectsData[1].images.length : 0;
+            const projectImagesCount = projectsData.slice(2).reduce((acc, project) => acc + (project.images ? project.images.length : 0), 0);
+
             if (projectsData.length === 0) {
                 container.innerHTML = '<p class="text-center text-gray-400">No project images available to display in the gallery.</p>';
                 return;
+
             }
 
             projectsData.forEach((project, projectIndex) => {
@@ -387,17 +471,51 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 // This ensures "Projects" only gets one header, and others get their specific header.
                 if (currentSection !== lastSection) {
                     // Close the previous grid container if it existed
-                    if (lastSection !== null) {
-                        htmlContent += '</div>';
+                    if (lastSection !== null) { 
+                        let lastSectionImageCount = 0;
+                        if (lastSection === "Our Office") lastSectionImageCount = officeImagesCount;
+                        else if (lastSection === "Workshop") lastSectionImageCount = workshopImagesCount;
+                        else lastSectionImageCount = projectImagesCount;
+
+                        const showLastButtons = lastSectionImageCount >= 5;
+
+                        htmlContent += `
+                            </div> <!-- Close horizontal-scroller -->
+                            <!-- Next Button -->
+                            <button 
+                                onclick="scrollCarousel('scroller-${lastSection.replace(/\s+/g, '-')}', 1)" 
+                                class="carousel-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 hover:bg-gold-accent transition duration-300 rounded-full z-10 ${showLastButtons ? 'md:block' : 'hidden'}"
+                            >
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                        </div></div>`; // Close scroller-container and the outer div
                     }
                     
+                    const scrollerId = `scroller-${currentSection.replace(/\s+/g, '-')}`;
                     // Render new header and start a new grid container
+
+                    let imageCountForSection = 0;
+                    if (currentSection === "Our Office") imageCountForSection = officeImagesCount;
+                    else if (currentSection === "Workshop") imageCountForSection = workshopImagesCount;
+                    else imageCountForSection = projectImagesCount;
+
+                    const showButtons = imageCountForSection >= 5;
+
                     htmlContent += `
-                        <h2 class="text-4xl font-display text-gold-accent mt-16 mb-8 uppercase font-bold text-center border-b border-gold-accent/50 pb-4">
-                            ${currentSection}
-                        </h2>
-                        <!-- Start of a new responsive grid for this section -->
-                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-12">
+                        <div class="mb-12">
+                            <div class="max-w-7xl mx-auto px-4">
+                                <h2 class="text-3xl font-display text-gold-accent mb-6 uppercase font-bold">${currentSection}</h2>
+                            </div>
+                            <div class="scroller-container">
+                                <!-- Prev Button -->
+                                <button 
+                                    onclick="scrollCarousel('${scrollerId}', -1)" 
+                                    class="carousel-prev-btn absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 hover:bg-gold-accent transition duration-300 rounded-full z-10 ${showButtons ? 'md:block' : 'hidden'} disabled:opacity-30 disabled:cursor-not-allowed"
+                                >
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                </button>
+
+                                <div id="${scrollerId}" class="horizontal-scroller">
                     `;
                     lastSection = currentSection;
                 }
@@ -415,24 +533,47 @@ Zip code 35514, Jubail Eastern Region KSA</a>
 
                         // 2. Render grid item
                         htmlContent += `
-                            <div class="gallery-item" onclick="openLightbox(${imageIndex})">
+                            <div class="scroller-item">
+                                <div class="gallery-item" onclick="openLightbox(${imageIndex})">
                                 <img src="${imagePath}" alt="${project.title}" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0D0D0D/faa412?text=Image+Loading+Error';" class="w-full h-full object-cover aspect-[4/3]">
                                 <div class="gallery-caption">
                                     <p class="text-xs text-gold-accent font-semibold">${project.title}</p>
                                 </div>
-                            </div>
-                        `;
+                            </div></div>`;
                     });
                 }
             });
             
             // Close the last grid div
             if (lastSection !== null) {
-                htmlContent += '</div>';
+                let lastSectionImageCount = 0;
+                if (lastSection === "Our Office") lastSectionImageCount = officeImagesCount;
+                else if (lastSection === "Workshop") lastSectionImageCount = workshopImagesCount;
+                else lastSectionImageCount = projectImagesCount;
+
+                const showLastButtons = lastSectionImageCount >= 5;
+
+                htmlContent += `
+                        </div> <!-- Close horizontal-scroller -->
+                        <!-- Next Button for the last section -->
+                        <button 
+                            onclick="scrollCarousel('scroller-${lastSection.replace(/\s+/g, '-')}', 1)" 
+                            class="carousel-next-btn absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/60 text-white p-3 hover:bg-gold-accent transition duration-300 rounded-full z-10 ${showLastButtons ? 'md:block' : 'hidden'} disabled:opacity-30 disabled:cursor-not-allowed"
+                        >
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>`; // Close scroller-container and outer div
             }
             
             // Inject all generated HTML into the main container
             container.innerHTML = htmlContent;
+
+            // After rendering, attach scroll listeners to all carousels
+            document.querySelectorAll('.horizontal-scroller').forEach(scroller => {
+                scroller.addEventListener('scroll', () => updateScrollButtons(scroller));
+                updateScrollButtons(scroller); // Set initial state
+            });
         }
 
 
