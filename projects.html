@@ -288,7 +288,6 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 category: "Project",
                 images: [
                     "projects/three-1.png",
-                    "projects/three-2.png",
                     "projects/three-3.png",
                     "projects/three-4.png",
                 ]
@@ -331,8 +330,8 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 subtitle: "Construction of Two Tanks",
                 client: "GSW",
                 type: "Fabrication & Erection",
-                timeline: "2.5 Years", // <-- UPDATED TIMELINE
-                location: "RIYADH",
+                timeline: "2.5 Years",
+                location: "Karachi",
                 value: "7 Million SAR",
                 status: "COMPLETED PROJECT",
                 isAramco: false,
@@ -398,7 +397,7 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 client: "ARAMCO",
                 type: "TCF Development & Repair",
                 timeline: "09 MONTHS",
-                location: "JUBAIL",
+                location: "Jubail",
                 value: "2.9 MILLION SAR",
                 status: "COMPLETED PROJECT",
                 isAramco: false,
@@ -422,7 +421,6 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 category: "Capability",
                 images: [
                     "projects/nine-1.png",
-                    "projects/nine-2.png",
                     "projects/nine-3.png",
                     "projects/nine-4.png",
                 ]
@@ -504,7 +502,7 @@ Zip code 35514, Jubail Eastern Region KSA</a>
             // 2. Set Modal Details - Conditionally filter out Client, Location, and Value if N/A / Capability
             let details = [
                 // Only show CLIENT if it's a Project, not a Capability
-                currentProject.category !== 'Capability' ? createDetailItem('CLIENT', currentProject.client, true) : '', 
+                // currentProject.category !== 'Capability' ? createDetailItem('CLIENT', currentProject.client, true) : '', 
                 createDetailItem('PROJECT TYPE', currentProject.type),
                 // Only show Timeline/Value if not N/A (Applies to both)
                 currentProject.timeline !== "N/A" ? createDetailItem('TIMELINE', currentProject.timeline) : '',
@@ -605,7 +603,7 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 // Conditionally build the details section for the main card display
                 let detailsHtml = [
                     // Only include CLIENT, LOCATION, and VALUE if it's a 'Project' or if the field is not N/A
-                    project.category !== 'Capability' ? createDetailItem('CLIENT', project.client, project.isAramco) : '',
+                    // project.category !== 'Capability' ? createDetailItem('CLIENT', project.client, project.isAramco) : '',
                     createDetailItem('PROJECT TYPE', project.type),
                     project.timeline !== "N/A" ? createDetailItem('TIMELINE', project.timeline) : '',
                     project.category !== 'Capability' ? createDetailItem('LOCATION', project.location) : '',
