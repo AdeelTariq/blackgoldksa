@@ -87,6 +87,12 @@
             padding: 0;
             margin: 0;
         }
+
+        /* Project Card Hover from projects.html */
+        .project-card:hover {
+             transform: translateY(-5px);
+             box-shadow: 0 15px 25px -5px rgba(255, 215, 0, 0.3);
+        }
     </style>
 </head>
 <body class="font-sans bg-black-primary text-white min-h-screen">
@@ -228,6 +234,39 @@
         </div>
     </section>
 
+    <!-- Featured Projects Section -->
+    <section class="bg-black-primary py-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-12 uppercase font-bold text-center">
+                Featured Projects
+            </h2>
+            <div id="featured-projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Featured project cards will be injected here by JS -->
+            </div>
+            <div class="text-center mt-16">
+                <a href="projects" class="inline-block bg-gold-accent text-black-primary py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Profile Download Section -->
+    <section class="bg-black-secondary py-20 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="font-display text-4xl md:text-5xl text-gold-accent mb-6 uppercase font-bold">
+                Download Our Profile
+            </h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-3xl mx-auto">
+                Get an in-depth look at our company's capabilities, project history, and commitment to excellence. Download our complete company profile for more details.
+            </p>
+            <!-- The 'download' attribute prompts the user to save the file -->
+            <a href="public/company-profile.pdf" download="Black-Gold-Construction-Profile.pdf" class="inline-block bg-gold-accent text-black-primary py-4 px-10 font-bold rounded-lg transition duration-300 text-lg uppercase hover:bg-gold-hover shadow-lg">
+                Download PDF
+            </a>
+        </div>
+    </section>
+
     <!-- Footer --><footer class="bg-black-secondary py-16 border-t border-gold-accent">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-left">
@@ -282,8 +321,8 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                         </li>
                         <li class="flex items-center space-x-3">
                             <!-- Mail Icon --><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-gold-accent flex-shrink-0"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-10 7-10-7"/></svg>
-                            <span><a href="mailto:tenders@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">tenders@blackgoldksa.com</a>
-                                <a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
+                            <span>For Bidding & Proposals: <a href="mailto:tenders@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">tenders@blackgoldksa.com</a>
+                                <br>For Info: <a href="mailto:info@blackgoldksa.com" class="hover:text-gold-accent transition duration-300">info@blackgoldksa.com</a></span>
                         </li>
                     </ul>
                 </div>
@@ -298,6 +337,131 @@ Zip code 35514, Jubail Eastern Region KSA</a>
 
     <!-- Font Awesome for social icons --><script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
+        // --- Project Data (copied from projects.html) ---
+        const projectsData = [
+            {
+                id: 4,
+                title: "FABRICATION/INSTALLATION OF RTR LINE",
+                subtitle: "6.7 KM GRE PIPELINE",
+                status: "ONGOING PROJECT",
+                images: [ "projects/four.png" ]
+            },
+            {
+                id: 5,
+                title: "CONSTRUCTION OF 24” DOWN STREAM PIPELINE",
+                subtitle: "16 KM PIPELINE JUBAIL AREA",
+                status: "ONGOING PROJECT",
+                images: [ "projects/five.png" ]
+            },
+            {
+                id: 3,
+                title: "FABRICATION & REPLACEMENT OF PIPING & STR VALVE STATIONS...",
+                subtitle: "56,000 INCH-DIA PIPING & 1590 TONNAGE OF STRUCTURAL WORK",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/three-1.png", "projects/three-3.png", "projects/three-4.png" ]
+            },
+            {
+                id: 1,
+                title: "CONSTRUCTION OF SWCC TANK",
+                subtitle: "Construction of Two Tanks",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/one.png" ]
+            },
+            {
+                id: 2,
+                title: "BOTTOM REPLACEMENT OF DEMIN WATER TANK (UNITED)",
+                subtitle: "REPLACEMENT OF BOTTOM, SKETCH & ANNULAR PLATES",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/two.png" ]
+            },
+            {
+                id: 6,
+                title: "FABRICAITON & REPLACEMENT OF PP DISCHARGE VESSEL & STR",
+                subtitle: "Replacement of Vessel",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/six-1.png", "projects/six-2.png", "projects/six-3.png", "projects/six-4.png" ]
+            },
+            {
+                id: 7,
+                title: "REPLACEMENT OF HEAT EXCHANGERS",
+                subtitle: "Shutdown Work",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/seven.png" ]
+            },
+            {
+                id: 8,
+                title: "EXCHANGER SHELL REPAIR WORK & TCF DEVELOPMENT",
+                subtitle: "Development of Technical Construction Facility (TCF)",
+                status: "COMPLETED PROJECT",
+                images: [ "projects/eight.png" ]
+            },
+            {
+                id: 9,
+                title: "PRE-CASTING OF FOUNDATIONS",
+                subtitle: "Ensuring structural integrity with ARAMCO standards.",
+                status: "COMPLETED PROJECT",
+                category: "Capability",
+                images: [ "projects/nine-1.png", "projects/nine-3.png", "projects/nine-4.png" ]
+            },
+            {
+                id: 10,
+                title: "CASTING OF STRUCTURAL COLUMNS",
+                subtitle: "Advanced techniques for industrial support structures.",
+                status: "COMPLETED PROJECT",
+                category: "Capability",
+                images: [ "projects/ten.png" ]
+            },
+            {
+                id: 11,
+                title: "TCF DEVELOPMENT",
+                subtitle: "Technical Construction Facility setup as per ARAMCO guidelines.",
+                status: "COMPLETED PROJECT",
+                category: "Capability",
+                images: [ "projects/eleven-1.png", "projects/eleven-2.png" ]
+            }
+        ];
+
+        /**
+         * Renders the first 3 completed projects to the homepage.
+         */
+        function renderFeaturedProjects() {
+            const container = document.getElementById('featured-projects-grid');
+            if (!container) return;
+
+            // Filter for completed projects and take the first 3
+            const featuredProjects = projectsData.filter(p => p.status === 'COMPLETED PROJECT').slice(0, 3);
+
+            if (featuredProjects.length === 0) {
+                container.innerHTML = '<p class="text-gray-400 col-span-3 text-center">Featured projects will be displayed here soon.</p>';
+                return;
+            }
+
+            let htmlContent = '';
+            featuredProjects.forEach(project => {
+                const imageSrc = (project.images && project.images.length > 0) ? project.images[0] : 'https://placehold.co/400x300/0D0D0D/faa412?text=Project+Image';
+                
+                htmlContent += `
+                    <a href="projects" class="project-card block bg-black-secondary rounded-xl overflow-hidden shadow-2xl transition-all duration-300 cursor-pointer border-t-4 border-gold-accent">
+                        <div class="overflow-hidden aspect-video">
+                            <img src="${imageSrc}" alt="${project.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x300/0D0D0D/faa412?text=Image+Error';">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-display text-white mb-2 font-bold uppercase truncate" title="${project.title}">
+                                ${project.title}
+                            </h3>
+                            <p class="text-gold-accent mb-4 font-medium h-12 overflow-hidden">${project.subtitle}</p>
+                            <div class="mt-4 pt-4 border-t border-gray-700 text-center">
+                                <span class="text-lg font-bold text-green-400 uppercase">${project.status}</span>
+                            </div>
+                        </div>
+                    </a>
+                `;
+            });
+
+            container.innerHTML = htmlContent;
+        }
+
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -347,6 +511,9 @@ Zip code 35514, Jubail Eastern Region KSA</a>
 
         // Start the automatic rotation
         setInterval(nextSlide, slideInterval);
+
+        // Render featured projects on page load
+        renderFeaturedProjects();
     </script>
 </body>
 </html>
