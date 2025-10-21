@@ -8,7 +8,7 @@
     <!-- Favicon --><link rel="icon" type="image/png" href="favico.png">
 
     <!-- Social Media Meta Tags (Open Graph for Facebook/LinkedIn/General) --><meta property="og:title" content="Black Gold Construction: Industrial Services Leader in KSA">
-    <meta property="og:description" content="Specializing in Civil, Mechanical, and Electrical & Instrumentation disciplines across the Kingdom of Saudi Arabia. Dynamic solutions for complex industrial projects.">
+    <meta property="og:description" content="Specializing in Civil, Mechanical, and Electrical-Instrumentation disciplines across the Kingdom of Saudi Arabia. Dynamic solutions for complex industrial projects.">
     <meta property="og:image" content="images/construction.jpg">
     <meta property="og:url" content="[Your Website URL Here]">
     <meta property="og:type" content="website">
@@ -115,8 +115,35 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-        .all-inline * {
+        #google_translate_element * {
             display: inline !important;
+            background: #faa412 !important;
+            border: none !important;
+            color: #0D0D0D !important;
+            font-weight: 500;
+            font-size: 1.125rem;
+            font-family: Roboto, sans-serif !important;
+        }
+        body {
+            top: 0 !important;
+        }
+
+        body>.skiptranslate, .goog-logo-link, .gskiptranslate, .goog-te-gadget span, .goog-te-banner-frame, #goog-gt-tt, .goog-te-balloon-frame, div#goog-gt-tt {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            color: transparent !important;
+            font-size: 0px;
+        }
+
+        .goog-text-highlight {
+            background: transparent !important;
+            box-shadow: transparent !important;
+        }
+
+        #google_translate_element select {
+            font-size: 1.125rem;
         }
     </style>
 </head>
@@ -144,7 +171,7 @@
                     <li><a href="gallery" class="px-2 pb-2 text-stone-900 text-lg font-medium hover:text-stone-800 hover:border-b-4 hover:border-stone-600 pb-1 transition duration-300">Gallery</a></li>
                     <li><a href="careers" class="px-2 pb-2 text-stone-900 text-lg font-medium hover:text-stone-800 hover:border-b-4 hover:border-stone-600 pb-1 transition duration-300">Careers</a></li>
                     <li><a href="contact" class="px-2 pb-2 text-stone-900 text-lg font-medium hover:text-stone-800 hover:border-b-4 hover:border-stone-600 pb-1 transition duration-300">Contact Us</a></li>
-                    <li><div id='google_translate_element' class="all-inline"></div></li>
+                    <li><div id='google_translate_element'></div></li>
                 </ul>
             </nav>
         </div>
