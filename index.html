@@ -629,14 +629,14 @@ Zip code 35514, Jubail Eastern Region KSA</a>
             // replace visible selected text after selection
             select.addEventListener('change', function() {
                 const opt = select.options[select.selectedIndex];
-                const text = translations[option.value] || opt.textContent;
+                const text = translations[opt.value] || opt.textContent;
                 select.options[select.selectedIndex].textContent = text;
             });
 
             // restore dropdown display text when reopening
             select.addEventListener('mousedown', function() {
                 Array.from(select.options).forEach(o => {
-                    o.textContent = labels[option.value];
+                    o.textContent = labels[o.value];
                 });
             });
         }
