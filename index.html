@@ -411,7 +411,7 @@ Zip code 35514, Jubail Eastern Region KSA</a>
         </div>
     </footer>
     
-    <div href="https://wa.me/966582174493" class="translate-float" target="_blank" rel="noopener noreferrer" aria-label="Change Language">
+    <div href="https://wa.me/966582174493" class="translate-float md:mt-8" target="_blank" rel="noopener noreferrer" aria-label="Change Language">
         <div id='google_translate_element'></div>
     </div>
     
@@ -616,11 +616,29 @@ Zip code 35514, Jubail Eastern Region KSA</a>
                 "ar": "🇸🇦",
                 "en": "🇬🇧"
             };
+            const labels = {
+                "": "Select",
+                "ar": "Arabic",
+                "en": "English"
+            };
             for (const option of select.options) {
                 if (translations.hasOwnProperty(option.value) && option.textContent != translations[option.value]) {
                     option.textContent = translations[option.value];
                 }
             }
+            // replace visible selected text after selection
+            select.addEventListener('change', function() {
+                const opt = select.options[select.selectedIndex];
+                const text = translations[option.value] || opt.textContent;
+                select.options[select.selectedIndex].textContent = text;
+            });
+
+            // restore dropdown display text when reopening
+            select.addEventListener('mousedown', function() {
+                Array.from(select.options).forEach(o => {
+                    o.textContent = labels[option.value];
+                });
+            });
         }
 
         // Observe DOM for when the select is added
